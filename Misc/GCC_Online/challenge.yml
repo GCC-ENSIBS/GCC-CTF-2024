@@ -1,0 +1,32 @@
+name: GCC Online
+author: Drahoxx
+# Crypto ; Web3 ; Web ; Reverse ; Forensic ; Misc ; OSINT ; Pwn
+category: Misc
+description: |-
+  Fun fact: Did you know gcc is also a compiler? Let's abuse it.
+   
+  The flag is located in `/data/flag-<random_hex_string>.txt`
+  Author: [Drahoxx](https://twitter.com/50mgDrahoxx)
+
+# Do not touch that, dynamic scoring is used.
+value: 500
+type: dynamic
+extra:
+  initial: 500
+  decay: 55
+  minimum: 100
+
+flags:
+- GCC{gcc_1s_f0r_GNU_Compiler_Collection_0r_Galettes_Cidre_CTF???}
+
+# Tags are : 1. Difficulty (Intro, Easy, Medium, Hard, Insane) ; 2. General theme (no spoil) ; 3. Author
+tags:
+- Hard
+- GCC
+- Drahoxx
+
+# More info : https://github.com/CTFd/ctfcli/blob/master/ctfcli/spec/challenge-example.yml
+connection_info: https://deploy.gcc-ctf.com/
+
+# Do not touch, ctf-cli related
+version: '0.1'

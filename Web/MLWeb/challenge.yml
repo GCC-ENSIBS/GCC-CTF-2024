@@ -1,0 +1,37 @@
+name: MLWeb
+author: xanhacks
+# Crypto ; Web3 ; Web ; Reverse ; Forensic ; Misc ; OSINT ; Pwn
+category: Web
+description: |-
+  Exploit a few vulnerabilities in a web application to get the flag.
+
+  Do not hesitate to look at the source code of the `load` model function.
+
+  Author: [xanhacks](https://twitter.com/xanhacks)
+
+# Do not touch that, dynamic scoring is used.
+value: 500
+type: dynamic
+extra:
+  initial: 500
+  decay: 55
+  minimum: 100
+
+flags:
+- GCC{0d4y_1n_d353r14l1z4710n_4r3_n07_7h47_h4rd_70_f1nd}
+
+# Tags are : 1. Difficulty (Intro, Easy, Medium, Hard, Insane) ; 2. General theme (no spoil) ; 3. Author
+tags:
+- Hard
+- Whitebox
+- xanhacks
+
+connection_info: https://deploy.gcc-ctf.com/
+
+files:
+- mlweb.zip
+
+# More info : https://github.com/CTFd/ctfcli/blob/master/ctfcli/spec/challenge-example.yml
+
+# Do not touch, ctf-cli related
+version: '0.1'

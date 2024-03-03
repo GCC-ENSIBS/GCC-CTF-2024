@@ -1,0 +1,81 @@
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+        <div class="sidebar-brand-icon">
+            <i class="fas fa-cloud-upload-alt"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">MLWeb <sup>GCC</sup></div>
+    </a>
+
+    <hr class="sidebar-divider my-0">
+
+    <li class="nav-item {% if active == 'Dashboard' %}active{% endif %}">
+        <a class="nav-link" href="/">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+        </a>
+    </li>
+
+    <hr class="sidebar-divider">
+
+    <div class="sidebar-heading">
+        Drive
+    </div>
+
+    <li class="nav-item {% if active == 'Files' %}active{% endif %}">
+        <a class="nav-link" href="/files">
+            <i class="far fa-file-alt"></i>
+            <span>Your Files</span>
+        </a>
+    </li>
+    
+    <li class="nav-item {% if active == 'Upload' %}active{% endif %}">
+        <a class="nav-link" href="/upload">
+            <i class="fas fa-file-upload"></i>
+            <span>Upload a file</span>
+        </a>
+    </li>
+    
+    <hr class="sidebar-divider">
+    
+    <div class="sidebar-heading">
+        Settings
+    </div>
+    
+    <li id="profileNav" class="nav-item {% if active == 'Profile' %}active{% endif %}">
+        <a class="nav-link" href="/profile">
+            <i class="fas fa-user-circle"></i>
+            <span>Profile</span>
+        </a>
+    </li>    
+
+    <li id="logoutNav" class="nav-item">
+        <a class="nav-link" href="/logout">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+        </a>
+    </li>
+
+    <li id="loginNav" class="nav-item" style="display: none;">
+        <a class="nav-link" href="/login">
+            <i class="fas fa-sign-in-alt"></i>
+            <span>Login</span>
+        </a>
+    </li>
+
+    <li id="registerNav" class="nav-item" style="display: none;">
+        <a class="nav-link" href="/register">
+            <i class="fas fa-user-plus"></i>
+            <span>Register</span>
+        </a>
+    </li>
+
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+</ul>
+
+<script src="/js/sidebar.js"></script>

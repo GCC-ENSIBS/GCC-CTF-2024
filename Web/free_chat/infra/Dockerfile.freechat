@@ -1,0 +1,40 @@
+FROM debian:12
+
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip \
+    locate 
+
+RUN useradd -ms /bin/bash freechat
+
+RUN mkdir /home/freechat/.for_d3vs_0nly/
+
+COPY ./devpanel/access_token.txt /home/freechat/.for_d3vs_0nly/
+
+COPY ./freechat /freechat
+
+WORKDIR /freechat
+
+RUN pip3 install -r requirements.txt --break-system-packages
+
+RUN chown -R freechat:freechat /freechat
+
+RUN mkdir -p /var/www/fr33chat_d3v_right.local
+
+WORKDIR /var/www/fr33chat_d3v_right.local
+
+COPY ./dev_freechat ./
+
+run pip3 install -r requirements.txt --break-system-packages
+
+COPY ./entrypoint.sh /sup3_dUp3r_bbf6089ad0a1c4ca3d6e87b5b019aa_3nTrYp01nt.sh
+
+RUN chmod +x /sup3_dUp3r_bbf6089ad0a1c4ca3d6e87b5b019aa_3nTrYp01nt.sh
+
+RUN updatedb
+
+USER freechat
+
+EXPOSE 5000
+
+ENTRYPOINT ["/sup3_dUp3r_bbf6089ad0a1c4ca3d6e87b5b019aa_3nTrYp01nt.sh"]

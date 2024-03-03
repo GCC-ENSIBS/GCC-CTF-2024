@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% include "head.html" %}
+<body>
+<header>
+    <h1>{{ title | default("Home") }}</h1>
+    <a href="/">
+        <img src="/static/images/logo.svg" alt="logo">
+    </a>
+    <link rel="stylesheet" href="/static/css/common.css">
+</header>
+<p>Internal server error</p>
+{% include "footer.html" %}
+</body>
+</html>

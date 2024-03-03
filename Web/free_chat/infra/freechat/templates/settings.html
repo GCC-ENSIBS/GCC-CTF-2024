@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" class="uk-background-custom">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/uikit.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+    <script src="{{ url_for('static', filename='js/uikit.min.js') }}" nonce="{{nonce}}"></script>
+    <script src="{{ url_for('static', filename='js/uikit-icons.min.js') }}" nonce="{{nonce}}"></script>
+    <title>FreeChat - Settings</title>
+</head>
+
+<body>
+    <div class="uk-height-auto uk-position-center uk-background-muted">
+        <div class="uk-margin-auto uk-card uk-card-default uk-card-body form-container uk-animation-fade uk-width-large">
+            <div class="uk-inline uk-height-auto uk-flex uk-flex-center uk-flex-middle uk-margin-bottom uk-transition-toggle" tabindex="0">
+                <img id="pfp" class="uk-border-circle uk-box-shadow-medium" src="/pfp?name={{current_user['pfp_path']}}" style="max-width: 50%;">
+                <a id="edit_pfp" href="{{url_for('profilePicture')}}">
+                    <div class="uk-transition-fade uk-position-cover uk-position-small uk-overlay uk-overlay-default uk-flex uk-flex-center uk-flex-middle">
+                        <p class="uk-h4 uk-margin-remove">edit pfp</p>
+                    </div>
+                </a>
+            </div>
+            {% if error %}
+            <div class="uk-alert-danger" uk-alert>
+                <a class="uk-alert-close" uk-close></a>
+                <p>{{error}}</p>
+            </div>
+            {% endif %}
+            {% if success %}
+            <div class="uk-alert-success" uk-alert>
+                <a class="uk-alert-close" uk-close></a>
+                <p>{{success}}</p>
+            </div>
+            {% endif %}
+            <div>
+                <form action="{{url_for('settings')}}" method="POST">
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-stacked-text">Username</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="form-stacked-text" type="text" name="username" value="{{current_user['username']}}">
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <div class="uk-form-controls">
+                            <button class="uk-button" value="submit">Update</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="uk-text-center">
+                <hr>
+                <a href="{{url_for('logout')}}" class="uk-icon-link uk-margin-small-right" uk-icon="sign-out"></a>|<a href="{{url_for('chat')}}" class="uk-icon-link uk-margin-small-left" uk-icon="mail"></a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

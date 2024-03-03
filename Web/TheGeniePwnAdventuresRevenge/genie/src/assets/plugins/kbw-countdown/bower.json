@@ -1,0 +1,32 @@
+{
+	"name": "kbw-countdown",
+	"description": "This plugin sets a div or span to show a countdown to a given time.",
+	"keywords": [
+		"countdown",
+		"jQuery",
+		"localisation",
+		"timer"
+	],
+	"homepage": "https://github.com/kbwood/countdown",
+	"authors": [
+		"Keith Wood <wood.keith@optusnet.com.au> (http://keith-wood.name)"
+	],
+	"licence": "MIT",
+	"main": [
+		"src/css/jquery.countdown.css",
+		"src/js/jquery.countdown.js"
+	],
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"src/bower_components"
+	],
+	"dependencies": {
+		"jquery": ">=1.12.0",
+		"kbw-plugin": "~1.0.3"
+	},
+	"devDependencies": {
+		"qunit": "~1.23",
+		"sinon": "http://sinonjs.org/releases/sinon-1.17.5.js"
+	}
+}

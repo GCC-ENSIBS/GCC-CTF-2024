@@ -1,0 +1,38 @@
+name: Legerdemain Revenge
+author: Shynif
+# Crypto ; Web3 ; Web ; Reverse ; Forensic ; Misc ; OSINT ; Pwn
+category: Misc
+description: |-
+  Guess what. I did it again :skull:
+
+  Author: [Shynif](https://antoine.rocks)
+
+# Do not touch that, dynamic scoring is used.
+value: 500
+type: dynamic
+extra:
+  initial: 500
+  decay: 55
+  minimum: 100
+
+flags:
+- GCC{l1st_Ch3ck}
+
+# Tags are : 1. Difficulty (Intro, Easy, Medium, Hard, Insane) ; 2. General theme (no spoil) ; 3. Author
+tags:
+- Medium
+- Pyjail
+- Shynif
+
+# Can and should be remove if not used
+connection_info: nc challenges1.gcc-ctf.com 4008
+files:
+- dist/auto_chall.py
+
+requirements:
+- "legerdemain"
+
+# More info : https://github.com/CTFd/ctfcli/blob/master/ctfcli/spec/challenge-example.yml
+
+# Do not touch, ctf-cli related
+version: '0.1'

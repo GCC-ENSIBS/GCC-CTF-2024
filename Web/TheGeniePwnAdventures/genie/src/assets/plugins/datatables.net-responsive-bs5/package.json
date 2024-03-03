@@ -1,0 +1,46 @@
+{
+    "name": "datatables.net-responsive-bs5",
+    "description": "Responsive for DataTables with styling for [Bootstrap5](https://getbootstrap.com/)",
+    "main": "js/responsive.bootstrap5.js",
+    "style": "css/responsive.bootstrap5.css",
+    "types": "./types/responsive.bootstrap5.d.ts",
+    "version": "2.2.9",
+    "files": [
+        "css/**/*.css",
+        "js/**/*.js"
+    ],
+    "keywords": [
+        "Responsive",
+        "Bootstrap",
+        "Bootstrap5",
+        "Datatables",
+        "jQuery",
+        "table",
+        "filter",
+        "sort"
+    ],
+    "dependencies": {
+        "jquery": ">=1.7"
+    },
+    "moduleType": [
+        "globals",
+        "amd",
+        "node"
+    ],
+    "ignore": [
+        "composer.json",
+        "datatables.json",
+        "package.json"
+    ],
+    "author": {
+        "name": "SpryMedia Ltd",
+        "url": "http://datatables.net"
+    },
+    "homepage": "https://datatables.net",
+    "bugs": "https://datatables.net/forums",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DataTables/Dist-DataTables-Responsive-Bootstrap5.git"
+    }
+}

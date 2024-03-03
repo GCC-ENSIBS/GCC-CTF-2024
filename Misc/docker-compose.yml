@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  dga:
+    build: DGA/infra
+    ports:
+      - "4003:1337"
+    deploy:
+      resources:
+        limits:
+          cpus: "6"
+          memory: 6G
+    restart: always
+    privileged: true
+  legerdemain:
+    build: legerdemain/infra
+    ports:
+      - "4007:1337"
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 2G
+    restart: always
+    privileged: true
+  legerdemain_revenge:
+    build: legerdemain_revenge/infra
+    ports:
+      - "4008:1337"
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 2G
+    restart: always
+    privileged: true

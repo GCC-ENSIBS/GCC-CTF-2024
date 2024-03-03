@@ -1,0 +1,31 @@
+name: Too Many Leaks
+author: TheoR
+category: Crypto
+description: |-
+  Charlie wants to sync with Alice and Bob, but something strange happended.  
+
+  Author: TheoR
+
+# Do not touch that, dynamic scoring is used.
+value: 500
+type: dynamic
+extra:
+  initial: 500
+  decay: 55
+  minimum: 100
+
+flags:
+- GCC{D1ff13_H3llm4n_L34k_15_FUn!!}
+
+# Tags are : 1. Difficulty (Intro, Easy, Medium, Hard, Insane) ; 2. General theme (no spoil) ; 3. Author
+tags:
+- Medium
+- Diffie-Hellman
+- TheoR
+
+files:
+- dist/chall.py
+- dist/output.txt
+
+# Do not touch, ctf-cli related
+version: '0.1'

@@ -1,0 +1,1 @@
+flag = b"GCC{plz_enjoy_it_smh}"

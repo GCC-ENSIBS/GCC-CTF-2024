@@ -1,0 +1,44 @@
+name: Flag Roulette
+author: "0xdeadbeef"
+# Crypto ; Web3 ; Web ; Reverse ; Forensic ; Misc ; OSINT ; Pwn
+category: Pwn
+description: |-
+  Are you tired of solving challs? 
+
+  Here, have a little break. If we win my game, I will give you a flag.
+
+  I promise you I will not cheat :) 
+
+  The flag is in the /flag file.
+
+  Author: 0xdeadbeef
+
+# Do not touch that, dynamic scoring is used.
+value: 500
+type: dynamic
+extra:
+  initial: 500
+  decay: 55
+  minimum: 100
+
+flags:
+- GCC{Th0s3_p0in7S_R_w3lL_deS3rvEd_Gig4ch4d}
+
+# Tags are : 1. Difficulty (Intro, Easy, Medium, Hard, Insane) ; 2. General theme (no spoil) ; 3. Author
+tags:
+- "Hard"
+- ""
+- "0xdeadbeef"
+
+connection_info: https://deploy.gcc-ctf.com/
+
+files:
+- dist/flag_roulette
+- dist/libc.so.6
+- dist/libseccomp.so.2.5.4
+- dist/ld-linux-x86-64.so.2
+
+# More info : https://github.com/CTFd/ctfcli/blob/master/ctfcli/spec/challenge-example.yml
+
+# Do not touch, ctf-cli related
+version: '0.1'

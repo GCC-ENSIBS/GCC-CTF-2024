@@ -1,0 +1,36 @@
+name: Bad Habit
+author: ribt
+# Crypto ; Web3 ; Web ; Reverse ; Forensic ; Misc ; OSINT ; Pwn
+category: Misc
+description: |-
+  I have a very bad habit: I store my credit card in my PC's smart card reader. An attacker is stealing its information. Can you recover the number and expiration date on the front of my credit card?
+
+  Flag format: `GCC{1234123412341234|MM/YY}` 
+
+  Author: ribt
+
+# Do not touch that, dynamic scoring is used.
+value: 500
+type: dynamic
+extra:
+  initial: 500
+  decay: 55
+  minimum: 100
+
+flags:
+  - GCC{5132630040615951|02/23}
+
+# Tags are : 1. Difficulty (Intro, Easy, Medium, Hard, Insane) ; 2. General theme (no spoil) ; 3. Author
+tags:
+- Medium
+- Hardware
+- ribt
+
+files:
+- dist/usb.pcapng
+
+
+# More info : https://github.com/CTFd/ctfcli/blob/master/ctfcli/spec/challenge-example.yml
+
+# Do not touch, ctf-cli related
+version: '0.1'

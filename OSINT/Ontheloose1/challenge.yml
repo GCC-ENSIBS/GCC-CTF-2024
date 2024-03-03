@@ -1,0 +1,32 @@
+name: On the loose [1/2]
+author: 6E 61 74 68
+category: OSINT
+description: |-
+  In the course of investigating an ongoing trafficking operation, our informants seem to have managed to recover a name: Satorco M. 
+  We don't have more information, we need you.
+  Can you find his username on Instagram?
+  
+  Flag format: GCC{username}
+
+  Author: [6E 61 74 68](https://twitter.com/6e617468) from [isFred.fr](https://isFred.fr)
+
+# Do not touch that, dynamic scoring is used.
+value: 500
+type: dynamic
+extra:
+  initial: 500
+  decay: 55
+  minimum: 100
+
+flags:
+- GCC{elfamosomanuel}
+
+topics:
+- socint
+
+tags:
+- Medium
+- Osint
+- 6e617468
+
+version: "0.1"

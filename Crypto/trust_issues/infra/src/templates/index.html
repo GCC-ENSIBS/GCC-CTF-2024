@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% include "head.html" %}
+    <body>
+        <style>
+    .home_logo {
+        max-width: 30vh;
+        max-height: 30vw;
+    }
+        </style>
+        <header>
+            <h1>{{ header_title | default("Home") }}</h1>
+            <a href="/login">
+                <img src="/static/images/login.svg" alt="login">
+            </a>
+        </header>
+        <img class="home_logo" src="/static/images/logo.svg" alt="logo">
+        <p>You can send me all secrets you want, and I will keep them safe.</p>
+        <p>I will never tell anyone.</p>
+        <p>I promise.</p>
+        <b>But will you find my own secret?</b>
+        <div>
+            <a href="/send_secret">Send a secret</a>
+            /
+            <a href="/get_secret">Get my secret</a>
+        </div>
+        {% include "footer.html" %}
+    </body>
+</html>
+    

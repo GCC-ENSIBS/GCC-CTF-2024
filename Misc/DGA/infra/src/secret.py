@@ -1,0 +1,1 @@
+FLAG = "GCC{M4ch1n3_L34rn1ng_15_v3ry_g00d_4t_d3t3ct1ng_m4l1c10us_4ct1v135}"

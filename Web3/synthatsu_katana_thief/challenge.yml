@@ -1,0 +1,44 @@
+name: Synthatsu katana thief
+author: Icarus
+# Crypto ; Web3 ; Web ; Reverse ; Forensic ; Misc ; OSINT ; Pwn
+category: Web3
+description: |-
+  2000 years from now, the earth has seen many wars, and the surface of the earth was forever damaged.
+  
+  Humans had to develop floating cities, the first one was Synthatsu, made by what was left of the Japanese history.
+  
+  Mixing futuristic building with a hint of traditional looks.
+  
+  This town was well known for its close combat weapons.
+  
+  One of the most prized katana maker works in that town.
+  
+  But just yesterday, some thugs named Beyond robbed his shop, and took some of his work!
+
+  Author: [Icarus](https://twitter.com/Ben_i_boy)
+
+# Do not touch that, dynamic scoring is used.
+value: 500
+type: dynamic
+extra:
+  initial: 500
+  decay: 55
+  minimum: 100
+
+flags:
+- GCC{All_Kat@na$_AR3_M!Ne_N0w}
+
+# Tags are : 1. Difficulty (Intro, Easy, Medium, Hard, Insane) ; 2. General theme (no spoil) ; 3. Author
+tags:
+- Easy
+- Solidity
+- Icarus
+
+files:
+- dist/synthatsu_katana_thief.zip
+
+connection_info: https://deploy.gcc-ctf.com/
+# More info : https://github.com/CTFd/ctfcli/blob/master/ctfcli/spec/challenge-example.yml
+
+# Do not touch, ctf-cli related
+version: '0.1'

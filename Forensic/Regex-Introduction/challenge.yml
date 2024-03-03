@@ -1,0 +1,38 @@
+name: BipBipBiiip
+author: Duraink
+# Crypto ; Web3 ; Web ; Reverse ; Forensic ; Misc ; OSINT ; Pwn
+category: Forensic
+description: |-
+  **Introduction to anomaly detection**
+
+  Find the phone numbers that are not formed in the correct way and decode the hidden message.
+
+  Format: GCC{...}
+
+  Author: Duraink
+
+# Do not touch that, dynamic scoring is used.
+value: 500
+type: dynamic
+extra:
+  initial: 500
+  decay: 55
+  minimum: 100
+
+flags:
+- GCC{R3g3x_4r3_W1ld!!!!}
+
+# Tags are : 1. Difficulty (Intro, Easy, Medium, Hard, Insane) ; 2. General theme (no spoil) ; 3. Author
+tags:
+- Easy
+- Regex
+- Duraink
+
+files:
+- dist/phonebook.csv
+
+
+# More info : https://github.com/CTFd/ctfcli/blob/master/ctfcli/spec/challenge-example.yml
+
+# Do not touch, ctf-cli related
+version: '0.1'

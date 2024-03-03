@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/static/style.css"/>
+    </head>
+    <body>
+        <div id="session">
+            {% if sessid %}
+            <p>Session ID: <span id="sessid">{{ sessid }}</span></p>
+            <img src="/static/icon_refresh.svg" onclick="new_session()" style="margin-left: 10px; cursor: pointer;"/>
+            {% endif %}
+        </div>
+        <div id="main">
+            {% if not sessid %}
+            <div style="display: flex; justify-content: center;">
+                <h1><a href="#" onclick="new_session()">Get a new session id</a></h1>
+            </div>
+            {% else %}
+            <div>
+                <h1>Upload your notes</h1>
+                <hr>
+                <form id="upload-notes-form">
+                    <input type="file" id="uploaded-notes" multiple="true"/>
+                    <input type="button" value="Upload" onclick="upload_notes()"/>
+                </form>
+            </div>
+            {% endif %}
+
+            <div id="notes-div" {{ "hidden" if not notes }}>
+                <h1>Uploaded notes</h1>
+                <hr>
+                <ul id="notes-list">
+                    {% for note in notes %}
+                    <li><a href="/api/notes/{{ sessid }}/{{ note|e }}">{{ note|e }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+    <script src="/static/script.js"></script>
+    </body>
+</html>

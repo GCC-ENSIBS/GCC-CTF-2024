@@ -1,0 +1,32 @@
+name: Free Cider
+author: Mika
+# Crypto ; Web3 ; Web ; Reverse ; Forensic ; Misc ; OSINT ; Pwn
+category: Web
+description: |-
+  The GCC team has designed a panel that allows you to get free cider. Unfortunately, registration closed just before the start of the CTF... So you're on your own to get your free bowls of cider!
+
+  Author: [Mika](https://twitter.com/bWlrYQ)
+
+# Do not touch that, dynamic scoring is used.
+value: 500
+type: dynamic
+extra:
+  initial: 500
+  decay: 55
+  minimum: 100
+
+flags:
+- GCC{P@ssw0rd_RST_Poison1nG_R0ck$!}
+
+# Tags are : 1. Difficulty (Intro, Easy, Medium, Hard, Insane) ; 2. General theme (no spoil) ; 3. Author
+tags:
+- Easy
+- Web
+- Mika
+
+connection_info: https://deploy.gcc-ctf.com/
+
+# More info : https://github.com/CTFd/ctfcli/blob/master/ctfcli/spec/challenge-example.yml
+
+# Do not touch, ctf-cli related
+version: '0.1'

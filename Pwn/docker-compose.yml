@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  dga:
+    build: CuttinString/infra
+    ports:
+      - "4004:1337"
+    deploy:
+      resources:
+        limits:
+          cpus: "4"
+          memory: 2G
+    restart: always
+    privileged: true

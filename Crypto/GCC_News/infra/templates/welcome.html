@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCC-NEWS - CTF News</title>
+    <!-- Bootstrap CSS link -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@iconscout/unicons/css/line.css">
+    <style>
+        /* Custom styles for the dropdown */
+        .dropdown-container {
+            position: relative;
+        }
+
+        .dropdown-icon {
+            position: absolute;
+            top: 20px; /* Adjust as needed */
+            right: 20px; /* Adjust as needed */
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Dropdown Icon -->
+    <header class="bg-primary text-white text-center py-5" style="background-color: #3a3a3a !important; position: relative;">
+        <h1 class="display-4">Welcome to GCC-NEWS</h1>
+        <p class="lead">Your Source for CTF News</p>
+
+        <!-- Dropdown Icon -->
+        <div class="dropdown-container">
+            <span class="dropdown-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bars" style="font-size: 2em; position: relative; top: -30px;">⌂</i>
+            </span>
+            <!-- Dropdown Menu -->
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="/">Home</a>
+                <a class="dropdown-item" href="/login">Login</a>
+                <a class="dropdown-item" href="/news">News</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mt-4">
+        <main>
+            <p class="lead">Stay informed about the latest CTF informations, trends, and more...</p>
+            <p class="lead">Explore our <a href="{{ url_for('news') }}">News</a> page for the latest updates.</p>
+        </main>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js (optional) -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

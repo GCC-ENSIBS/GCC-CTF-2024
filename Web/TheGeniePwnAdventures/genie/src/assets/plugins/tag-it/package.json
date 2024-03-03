@@ -1,0 +1,25 @@
+{
+  "name": "tag-it",
+  "version": "2.0.0",
+  "description": "A jQuery UI plugin to handle multi-tag fields as well as tag suggestions/autocomplete.",
+  "main": "js/tag-it.min.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aehlke/tag-it.git"
+  },
+  "keywords": [
+    "jquery",
+    "tags",
+    "tag",
+    "tagit",
+    "input",
+    "select",
+    "suggest"
+  ],
+  "author": "Alex Ehlke",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aehlke/tag-it/issues"
+  },
+  "homepage": "https://github.com/aehlke/tag-it#readme"
+}

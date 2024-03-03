@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FreeChat - Dev Panel</title>
+    <script src="/static/js/hint.js"></script>
+</head>
+<body>
+    <div style="text-align: center;">
+        <h1>FreeChat - Dev Panel</h1>
+        <h3>Welcome dev, to access the panel, please enter your access token</h3>
+        <form action="http://devpanel:8000/" action="GET">
+            <input type="text" name="token" placeholder="Access Token">
+            <input type="submit" value="Submit">
+        </form>
+        <div>
+            <h5 style="display: inline-block;">Forgot your token ? </h5>
+            <button onclick="hint()" style="display: inline-block;">Hint</button>
+        </div>
+        <div id="hint"></div>
+    </div>
+
+</body>
+</html>

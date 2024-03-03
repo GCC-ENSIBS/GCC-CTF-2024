@@ -1,0 +1,35 @@
+{% include "./partials/head.html" %}
+
+<body id="page-top">
+    <div id="wrapper">
+        {% include "./partials/sidebar.html" %}
+
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <div class="container-fluid">
+                    <div class="container mt-5">
+                        {% include "./partials/flash.html" %}
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Profile</h5>
+                                <form>
+                                    <div class="form-group">
+                                        <label>Username: <strong>{{ user.username }}</strong></label>
+                                    </div>
+                                    <div class="form-group text-muted">
+                                        <label>Register date: {{ user.register_date }}</label>
+                                    </div>
+                                    <a href="/profile/visit" class="btn btn-info">Visit My Profile</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% include "./partials/bottombar.html" %}
+        </div>
+    </div>
+    {% include "./partials/footer.html" %}
+</body>
+
+</html>

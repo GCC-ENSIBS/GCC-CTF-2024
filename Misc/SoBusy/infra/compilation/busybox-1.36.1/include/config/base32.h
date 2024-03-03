@@ -1,0 +1,1 @@
+#define CONFIG_BASE32 1

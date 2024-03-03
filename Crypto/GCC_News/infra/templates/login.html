@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script>
+        function toggleForms() {
+            var loginForm = document.getElementById('loginForm');
+            var createAccountForm = document.getElementById('createAccountForm');
+
+            loginForm.style.display = loginForm.style.display === 'none' ? 'block' : 'none';
+            createAccountForm.style.display = createAccountForm.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
+    <!-- Bootstrap CSS link -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@iconscout/unicons/css/line.css">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Set background color */
+            font-family: 'Arial', sans-serif; /* Optional: Use a different font */
+        }
+
+        h1 {
+            color: #3a3a3a; /* Set heading color */
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #3a3a3a; /* Set form background color */
+            color: #ffffff; /* Set text color */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        label {
+            color: #ffffff; /* Set label color */
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #f99712; /* Set submit button background color (you can adjust this if needed) */
+            color: #f8f9fa; /* Set submit button text color */
+            cursor: pointer;
+        }
+
+        a {
+            color: #000000; /* Set link color */
+            cursor: pointer;
+        }
+
+        /* Center the paragraph with the login link */
+        p {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Login</h1>
+    {% if pop_up_message %}
+        <script>
+            alert("{{ pop_up_message }}");
+        </script>
+    {% endif %}
+
+    <div id="loginForm">
+        <form method="post" action="{{ url_for('login') }}">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br>
+
+            <input type="submit" value="Login">
+        </form>
+
+        <p>Don't have an account? <a href="#" onclick="toggleForms()">Create one</a>.</p>
+    </div>
+
+    <div id="createAccountForm" style="display: none;">
+        <form method="post" action="{{ url_for('create_user') }}">
+            <label for="new_username">New Username:</label>
+            <input type="text" id="new_username" name="new_username" required><br>
+
+            <label for="new_password">New Password:</label>
+            <input type="password" id="new_password" name="new_password" required><br>
+
+            <input type="submit" value="Create User">
+        </form>
+
+        <!-- Centered login link -->
+        <p style="text-align: center;">Already have an account? <a href="#" onclick="toggleForms()">Login</a>.</p>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js (optional) -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

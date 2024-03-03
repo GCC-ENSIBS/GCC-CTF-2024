@@ -1,0 +1,37 @@
+{% include "./partials/head.html" %}
+
+<body id="page-top">
+    <div id="wrapper">
+        {% include "./partials/sidebar.html" %}
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <div class="container-fluid mt-5">
+                    <div class="container mt-5">
+                        {% include "./partials/flash.html" %}
+                        <h2 class="mb-4">Upload File</h2>
+                        <form id="uploadForm" action="/upload" method="POST" enctype="multipart/form-data">
+                            <div class="custom-file mb-3">
+                                <input type="file" class="custom-file-input" id="fileInput" name="file">
+                                <label id="fileLabel" class="custom-file-label" for="fileInput">Choose file</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Upload</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% include "./partials/bottombar.html" %}
+        </div>
+    </div>
+    {% include "./partials/footer.html" %}
+    <script>
+        const fileInput = document.getElementById('fileInput');
+
+        fileInput.addEventListener('change', (e) => {
+            const fileName = e.target.files[0].name;
+            const fileLabel = document.getElementById('fileLabel');
+            fileLabel.innerHTML = fileName;
+        });
+    </script>
+</body>
+
+</html>

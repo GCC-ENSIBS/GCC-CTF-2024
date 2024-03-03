@@ -1,0 +1,40 @@
+name: Pincer
+author: Greed
+# Crypto ; Web3 ; Web ; Reverse ; Forensic ; Misc ; OSINT ; Pwn
+category: Web3
+description: |-
+  As the Havling Day approaches, more and more projects go live, aiming to change the world or simply make money.
+  
+  This new protocol is very trendy and even attracts whales craving to get bigger.
+  
+  The concept is straightforward: the more you swap, the higher your chances to win the prize.
+  
+  NB: This is a fork of the Ethereum mainnet at block 19301562
+
+  Author: [Greed](https://twitter.com/0xGreed_)
+
+# Do not touch that, dynamic scoring is used.
+value: 500
+type: dynamic
+extra:
+  initial: 500
+  decay: 55
+  minimum: 100
+
+flags:
+- GCC{Fr0nT_@nd_BACK_Runn!ng_Ar3_KING$_in_W3b3}
+
+# Tags are : 1. Difficulty (Intro, Easy, Medium, Hard, Insane) ; 2. General theme (no spoil) ; 3. Author
+tags:
+- Hard
+- DeFi
+- Greed
+
+files:
+- dist/gcc_pincer.zip
+
+connection_info: https://deploy.gcc-ctf.com/
+# More info : https://github.com/CTFd/ctfcli/blob/master/ctfcli/spec/challenge-example.yml
+
+# Do not touch, ctf-cli related
+version: '0.1'

@@ -1,0 +1,34 @@
+name: Elliptic
+author: Shadowwws
+# Crypto ; Web3 ; Web ; Reverse ; Forensic ; Misc ; OSINT ; Pwn
+category: Crypto
+description: |-
+  Elliptic curves make everything funnier
+
+  Author: [Shadowwws](https://twitter.com/Shadowwws7)
+
+# Do not touch that, dynamic scoring is used.
+value: 500
+type: dynamic
+extra:
+  initial: 500
+  decay: 55
+  minimum: 100
+
+flags:
+- GCC{plz_enjoy_it_smh}
+
+# Tags are : 1. Difficulty (Intro, Easy, Medium, Hard, Insane) ; 2. General theme (no spoil) ; 3. Author
+tags:
+- Insane
+- Shadowwws
+
+# Can and should be remove if not used
+connection_info: nc challenges1.gcc-ctf.com 4000
+files:
+- dist/chall.sage
+
+# More info : https://github.com/CTFd/ctfcli/blob/master/ctfcli/spec/challenge-example.yml
+
+# Do not touch, ctf-cli related
+version: '0.1'

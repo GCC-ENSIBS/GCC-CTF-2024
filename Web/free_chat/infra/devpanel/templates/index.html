@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DevPanel</title>
+</head>
+<body>
+    <div style="text-align: center;">
+        <h1>DevPanel</h1>
+        {% if token %}
+            <h5>Hello dev, your flag is : {{flag}}</h5>
+            <p>Made with ❤️ by Mika</p>
+        {% else %}
+            <h5>Sorry, you are not a dev</h5>
+        {% endif %}
+    </div>
+</body>
+</html>

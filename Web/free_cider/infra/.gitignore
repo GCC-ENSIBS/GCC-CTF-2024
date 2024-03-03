@@ -1,0 +1,5 @@
+src/instance/*.db
+src/instance/*.db-journal
+src/__pycache__/
+src/lib/__pycache__/
+.venv/*

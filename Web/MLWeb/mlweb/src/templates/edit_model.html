@@ -1,0 +1,36 @@
+{% include "./partials/head.html" %}
+
+<body id="page-top">
+    <div id="wrapper">
+        {% include "./partials/sidebar.html" %}
+
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <div class="container-fluid">
+                    <div class="container mt-5">
+                        {% include "./partials/flash.html" %}
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Edit model #{{ model.id }}</h5>
+                                <form action="/model/edit/{{ model.id }}" method="POST">
+                                    <div class="form-group">
+                                        <label for="filenameInput">Name</label>
+                                        <input type="text" class="form-control" name="name"
+                                            placeholder="Enter filename" value="{{ model.name }}">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            {% include "./partials/bottombar.html" %}
+        </div>
+    </div>
+    {% include "./partials/footer.html" %}
+</body>
+
+</html>

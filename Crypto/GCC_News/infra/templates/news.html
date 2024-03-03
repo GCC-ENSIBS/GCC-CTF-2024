@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News</title>
+    <!-- Bootstrap CSS link -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@iconscout/unicons/css/line.css">
+    <style>
+        /* Custom styles for the dropdown */
+        .dropdown-container {
+            position: relative;
+        }
+
+        .dropdown-icon {
+            position: absolute;
+            top: 20px; /* Adjust as needed */
+            right: 20px; /* Adjust as needed */
+            cursor: pointer;
+        }
+
+        .flashcard-click {
+            cursor: pointer;
+        }
+
+        /* Custom styles for the flashcards */
+        .flashcard {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .flashcard-image {
+            height: 150px; /* Adjust the height as needed */
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            padding: 20px;
+        }
+
+        .flashcard-description {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Dropdown Icon -->
+    <header class="bg-primary text-white text-center py-5" style="background-color: #3a3a3a !important; position: relative;">
+        <h1 class="display-4">Welcome to the News Page</h1>
+        <div class="dropdown-container">
+            <span class="dropdown-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bars" style="font-size: 2em; position: relative; top: -30px;">⌂</i>
+            </span>
+            <!-- Dropdown Menu -->
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="/">Home</a>
+                <a class="dropdown-item" href="/login">Login</a>
+                <a class="dropdown-item" href="/news">News</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mt-4">
+        <main>
+            {% if username %}
+                <p>Hello, {{ username }}!</p>
+                {% if subscribe %}
+                    <!-- Flashcards Section -->
+                    <div class="row">
+                        <!-- Flashcard 1 -->
+                        <div class="col-md-4">
+                            <div class="flashcard" data-toggle="modal" data-target="#flashcardModal1">
+                                <div class="flashcard-image" style="background-image: url('/static/gcc.jpg');">
+                                </div>
+                                <div class="flashcard-description">
+                                    <p class="flashcard-click">Compete in GCC CTF now!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal fade" id="flashcardModal1" tabindex="-1" role="dialog" aria-labelledby="flashcardModalLabel1" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="flashcardModalLabel1">Compete in GCC CTF now!</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Wouah!! You're a big boss. Here is your flag : GCC{f1x3d_533d_d154bl3_r4nd0mn355}</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Flashcard 2 -->
+                        <div class="col-md-4">
+                            <div class="flashcard">
+                                <div class="flashcard-image" style="background-image: url('/static/ctf_hackers.webp');">
+                                </div>
+                                <div class="flashcard-description">
+                                    <p>What's a CTF?</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Flashcard 3 -->
+                        <div class="col-md-4">
+                            <div class="flashcard">
+                                <div class="flashcard-image" style="background-image: url('/static/Hackropole.png');">
+                                </div>
+                                <div class="flashcard-description">
+                                    <p>Hackropole : A new training platform</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Second Row of Flashcards -->
+                    <div class="row">
+                        <!-- Flashcard 4 -->
+                        <div class="col-md-4">
+                            <div class="flashcard">
+                                <div class="flashcard-image" style="background-image: url('/static/crypto.jpg');">
+                                </div>
+                                <div class="flashcard-description">
+                                    <p>Why should you enter the cryptography world?</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Flashcard 5 -->
+                        <div class="col-md-4">
+                            <div class="flashcard">
+                                <div class="flashcard-image" style="background-image: url('/static/HTB_Univ_23.jpg');">
+                                </div>
+                                <div class="flashcard-description">
+                                    <p>Hack The Box - University CTF 2023</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of Flashcards Section -->
+                    
+                {% else %}
+                    <p>You are not a subscriber. Subscribe to access the news.</p>
+                {% endif %}
+            {% else %}
+                <p>Unauthorized access. Please log in.</p>
+            {% endif %}
+        </main>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js (optional) -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

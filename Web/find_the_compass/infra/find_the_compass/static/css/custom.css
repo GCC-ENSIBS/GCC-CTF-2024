@@ -1,0 +1,16 @@
+.uk-background-custom {
+    background-color: purple; /* Replace #ff0000 with your desired color code */
+  }
+
+#logo {
+    width: 30%;
+    height: 30%;
+    border-radius: 50%;
+}
+
+@media (max-width: 450px) {
+    #logo{
+        width: 40%;
+        height: 40%;
+    }
+}

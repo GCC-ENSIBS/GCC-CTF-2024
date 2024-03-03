@@ -1,0 +1,38 @@
+name: Baby bof
+author: "0xdeadbeef"
+# Crypto ; Web3 ; Web ; Reverse ; Forensic ; Misc ; OSINT ; Pwn
+category: Pwn
+description: |-
+  I made a funny little program. 
+
+  It was compiled with a lot of fancy protections, so I didn't even try to code securely.
+
+  Author: 0xdeadbeef
+
+# Do not touch that, dynamic scoring is used.
+value: 500
+type: dynamic
+extra:
+  initial: 500
+  decay: 55
+  minimum: 100
+
+flags:
+- GCC{Cl4nG_iN_GCC_c7F_i5_k1nD4_fUnNy}
+
+# Tags are : 1. Difficulty (Intro, Easy, Medium, Hard, Insane) ; 2. General theme (no spoil) ; 3. Author
+tags:
+- Medium
+- Stack
+- "0xdeadbeef"
+
+connection_info: https://deploy.gcc-ctf.com/
+
+files:
+- dist/baby_bof
+- dist/libc.so.6
+
+# More info : https://github.com/CTFd/ctfcli/blob/master/ctfcli/spec/challenge-example.yml
+
+# Do not touch, ctf-cli related
+version: '0.1'

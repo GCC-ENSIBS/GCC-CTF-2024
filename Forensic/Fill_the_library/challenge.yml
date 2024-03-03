@@ -1,0 +1,51 @@
+name: Fill the library
+author: Shaym
+# Crypto ; Web3 ; Web ; Reverse ; Forensic ; Misc ; OSINT ; Pwn
+category: Forensic
+description: |-
+  An employee has been compromised following a malicious email campaign.
+  In order to allow him to resume his activities, we have entrusted you with analyzing the email.
+
+  - Find the 3 CVEs that the attacker is trying to exploit
+  - Find the name of the object containing the malicious payload
+  - Find the family name of this malware
+
+  Format: GCC{CVE-ID_CVE-ID_CVE-ID:object_name:malware_family}
+  
+  Example of flag: GCC{CVE-2022-39998_CVE-2022-39999_CVE-2023-29999:Object.XYZ:Qakbot}
+
+  NOTES:
+  - Order of the CVEs is alphabetical
+  - Don't include null bytes (if you find ObjEct.XYZ\x00, put ObjEct.XYZ)
+  - The flag is case sensitive
+  - ZIP password: infected
+
+  Author: [Shaym](https://twitter.com/0xfockoff)
+
+# Do not touch that, dynamic scoring is used.
+value: 500
+type: dynamic
+extra:
+  initial: 500
+  decay: 55
+  minimum: 100
+
+flags:
+- GCC{CVE-2017-11882_CVE-2018-0798_CVE-2018-0802:EQuAtIon.3:Formbook}
+- GCC{CVE-2017-11882_CVE-2018-0798_CVE-2018-0802:EQuAtIon.3:FormBook}
+
+# Tags are : 1. Difficulty (Intro, Easy, Medium, Hard, Insane) ; 2. General theme (no spoil) ; 3. Author
+tags:
+- Medium
+- Shaym
+- Malware Analysis
+- Threat Intel
+
+# Can and should be remove if not used
+files:
+- dist/evidence.zip
+
+# More info : https://github.com/CTFd/ctfcli/blob/master/ctfcli/spec/challenge-example.yml
+
+# Do not touch, ctf-cli related
+version: '0.1'

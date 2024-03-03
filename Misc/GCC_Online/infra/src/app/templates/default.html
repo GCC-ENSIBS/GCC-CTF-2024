@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Compiler</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+</head>
+<body>
+
+<section class="section">
+    <div class="container">
+        <h1 class="title">Code Compiler</h1>
+        <div class="columns">
+            <div class="column is-half">
+                <form id="compiler-form">
+                    <div class="field">
+                        <label class="label">C Code</label>
+                        <div class="control">
+                            <textarea class="textarea" name="code" rows="10" placeholder="Enter your C code here"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">GCC Options</label>
+                        <div class="control">
+                            <input class="input" type="text" name="gcc_options" placeholder="e.g., -Wall -fpie">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">GCC Environment Variables</label>
+                        <div class="control">
+                            <div id="env-vars-container">
+                                <div class="columns" id="env-var-row-0">
+                                    <div class="column">
+                                        <input class="input" type="text" name="env_key_0" placeholder="Key">
+                                    </div>
+                                    <div class="column">
+                                        <input class="input" type="text" name="env_value_0" placeholder="Value">
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <button class="button is-info" type="button" onclick="addEnvVarRow()">Add Environment Variable</button>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            <button class="button is-primary" type="button" onclick="compileCode()">Compile</button>
+                        </div>
+                    </div>
+                </form>
+
+                <div id="result-container" style="display: none;">
+                    <h2 class="subtitle">Compilation Result:</h2>
+                    <pre id="result"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    let envVarCounter = 1;
+
+    function addEnvVarRow() {
+        const container = document.getElementById('env-vars-container');
+        const newRow = document.createElement('div');
+        newRow.classList.add('columns');
+        newRow.id = `env-var-row-${envVarCounter}`;
+
+        newRow.innerHTML = `
+            <div class="column">
+                <input class="input" type="text" name="env_key_${envVarCounter}" placeholder="Key">
+            </div>
+            <div class="column">
+                <input class="input" type="text" name="env_value_${envVarCounter}" placeholder="Value">
+            </div>
+        `;
+
+        container.appendChild(newRow);
+        envVarCounter++;
+    }
+    const b64toBlob = (b64Data, contentType='', sliceSize=512) => {
+      const byteCharacters = atob(b64Data);
+      const byteArrays = [];
+
+      for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+        const slice = byteCharacters.slice(offset, offset + sliceSize);
+
+        const byteNumbers = new Array(slice.length);
+        for (let i = 0; i < slice.length; i++) {
+          byteNumbers[i] = slice.charCodeAt(i);
+        }
+
+        const byteArray = new Uint8Array(byteNumbers);
+        byteArrays.push(byteArray);
+      }
+        
+      const blob = new Blob(byteArrays, {type: contentType});
+      return blob;
+    }
+    async function compileCode() {
+        const form = document.getElementById('compiler-form');
+        const resultContainer = document.getElementById('result-container');
+        const resultElement = document.getElementById('result');
+
+        try {
+            const formData = new FormData(form);
+
+            // Construct the payload with gcc_envars as a dictionary
+            const gccEnvars = {};
+            for (let i = 0; i < envVarCounter; i++) {
+                const key = formData.get(`env_key_${i}`);
+                const value = formData.get(`env_value_${i}`);
+                if (key !== null && value !== null) {
+                    gccEnvars[key] = value;
+                }
+            }
+
+            const payload = {
+                code: formData.get('code'),
+                gcc_options: formData.get('gcc_options').split(' '), // Assuming options are space-separated
+                gcc_envars: gccEnvars
+            };
+
+            const response = await fetch('/compile', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                if (data.result === "Compilation successful" && data.binary) {
+                    // Decode base64 and initiate download
+                    const binaryContent = b64toBlob(data.binary);
+                    //const blob = new Blob([binaryContent], { type: 'application/octet-stream' });
+                    //const url = URL.createObjectURL(blob);
+                    const url = URL.createObjectURL(binaryContent);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'compiled_binary';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+
+                    // Display success message
+                    resultElement.textContent = 'Compilation successful. Binary downloaded.\n Output:\n\n'+data.out+"\n\nWarnings: \n\n"+data.warn;
+                } else if(data.result === "Compilation error"){
+                    // Display success message
+                    resultElement.textContent = 'Compilation Error.\n\n'+data.python_error+'\n\n Output:\n\n'+data.out+"\n\nWarnings: \n\n"+data.warn;
+                }else {
+                    resultElement.textContent = data.error || 'Unknown error';
+                }
+            } else {
+                resultElement.textContent = data.error || 'Unknown error';
+            }
+
+            resultContainer.style.display = 'block';
+        } catch (error) {
+            resultElement.textContent = `Error: ${error.message}`;
+            resultContainer.style.display = 'block';
+        }
+    }
+</script>
+
+</body>
+</html>

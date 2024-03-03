@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" class="uk-background-custom">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/uikit.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+    <script src="{{ url_for('static', filename='js/uikit.min.js') }}" nonce="{{nonce}}"></script>
+    <script src="{{ url_for('static', filename='js/uikit-icons.min.js') }}" nonce="{{nonce}}"></script>
+    <title>FreeChat - PFP</title>
+</head>
+
+<body>
+    <div class="uk-height-auto uk-position-center uk-background-muted">
+        <div class="uk-margin-auto uk-card uk-card-default uk-card-body form-container uk-animation-fade uk-width-large">
+            <div class="uk-inline uk-height-auto uk-flex uk-flex-center uk-flex-middle uk-margin-bottom uk-transition-toggle" tabindex="0">
+                <img id="pfp" class="uk-border-circle uk-box-shadow-medium" src="/pfp?name={{current_user['pfp_path']}}" style="max-width: 50%;">
+            </div>
+            <h1 class="uk-h3 uk-margin-remove uk-text-center">Update Profile Picture (png only)</h1>
+            <h5 class="uk-h5 uk-margin-remove uk-text-center">Max size: 16MB</h5>
+            {% if error %}
+            <div class="uk-alert-danger" uk-alert>
+                <a class="uk-alert-close" uk-close></a>
+                <p>{{error}}</p>
+            </div>
+            {% endif %}
+            {% if success %}
+            <div class="uk-alert-success" uk-alert>
+                <a class="uk-alert-close" uk-close></a>
+                <p>{{success}}</p>
+            </div>
+            {% endif %}
+            <hr>
+            <form method="POST" enctype="multipart/form-data" action="/profilePicture">
+                <fieldset class="uk-fieldset">
+                    <legend class="uk-legend">Local file</legend>
+                    <div class="uk-margin" uk-margin>
+                        <div uk-form-custom="target: true">
+                            <input type="file" name="picture" aria-label="Custom controls">
+                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Selectionner un fichier" aria-label="Custom controls" disabled>
+                        </div>
+                        <input type="submit" value="Upload" class="uk-button"/>
+                    </div>
+                </fieldset>
+            </form>
+            <form method="POST" enctype="multipart/form-data" action="/profilePicture">
+                <fieldset class="uk-fieldset">
+                    <legend class="uk-legend">Remote file</legend>
+                    <div class="uk-margin" uk-margin>
+                        <div uk-form-custom="target: true">
+                            {% if result %}
+                            <input class="uk-input" type="text" name="remote_link" value="{{link}}">
+                            {% else %}
+                            <input class="uk-input" type="text" name="remote_link">
+                            {% endif %}
+                        </div>
+                        <input type="submit" value="Check" class="uk-button"/>
+                    </div>
+                </fieldset>
+            </form>
+            {% if result %}
+                <div class="uk-inline uk-height-auto uk-flex uk-flex-center">
+                    <img src="data:image/png;base64, {{result}}" class="uk-width-1" style="max-width: 100px; max-height: 100px;"></iframe>
+                </div>
+                <p class="uk-text-center">Do you confirm the upload of this profile picture ?</p>
+                <div class="uk-panel uk-flex uk-flex-center uk-flex-middle">
+                    <form method="POST" action="/profilePicture">
+                        <input type="hidden" name="link" value="{{link}}">
+                        <input type="submit" value="Confirm" class="uk-button"/>
+                    </form>
+                    <button class="uk-button uk-margin-small-left uk-margin-small-right" onclick="window.location.href='/profilePicture'">Cancel</button>
+                </div>
+                <br>
+            {% endif %}
+            <div class="uk-text-center">
+                <hr>
+                <a href="{{url_for('logout')}}" class="uk-icon-link uk-margin-small-right" uk-icon="sign-out"></a>|<a href="{{url_for('settings')}}" class="uk-icon-link uk-margin-small-left uk-margin-small-right" uk-icon="cog"></a> |<a href="{{url_for('chat')}}" class="uk-icon-link uk-margin-small-left" uk-icon="mail"></a>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/progressbar.js') }}" nonce="{{nonce}}"></script>
+</body>
+</html>

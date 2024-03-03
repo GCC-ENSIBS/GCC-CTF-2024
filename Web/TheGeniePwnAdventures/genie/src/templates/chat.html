@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>BockLit - Chat</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content>
+		<meta name="author" content>
+		<link href="/app/assets/css/vendor.min.css" rel="stylesheet" />
+		<link href="/app/assets/css/app.min.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div id="app" class="app app-content-full-height">
+			<div id="header" class="app-header">
+				<div class="brand">
+					<a href="/chat" class="brand-logo">
+					<span class="brand-img">
+					<span class="brand-img-text text-theme">B</span>
+					</span>
+					<span class="brand-text">BockLit</span>
+					</a>
+				</div>
+				<div class="menu">
+					<div class="menu-item dropdown dropdown-mobile-full">
+						<a href="#" data-bs-toggle="dropdown" data-bs-display="static" class="menu-link">
+							<div class="menu-img online">
+								<img src=" /app/assets/img/user/profile.jpg" alt="Profile" height="60">
+							</div>
+							<div class="menu-text d-sm-block d-none w-170px"><span>{{ user.username }}</span></div>
+						</a>
+						<div class="dropdown-menu dropdown-menu-end me-lg-3 fs-11px mt-1">
+							<a class="dropdown-item d-flex align-items-center" href="/logout">LOGOUT <i class="bi bi-toggle-off ms-auto text-theme fs-16px my-n1"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<button class="app-sidebar-mobile-backdrop" data-toggle-target=".app" data-toggle-class="app-sidebar-mobile-toggled"></button>
+			<div id="content" class="app-content p-1">
+				<div class="card h-100">
+					<div class="messenger">
+						<div class="messenger-sidebar">
+							<div class="messenger-sidebar-header">
+								<h3 class="mb-10px">Chats</h3>
+								<div class="position-relative">
+									<button type="submit" class="btn text-inverse position-absolute top-0"><i class="bi bi-search"></i></button>
+									<input type="text" class="form-control rounded-pill ps-35px" placeholder="Search Messenger">
+								</div>
+							</div>
+							<div class="messenger-sidebar-body">
+								<div data-scrollbar="true" data-height="100%">
+									<div class="messenger-item">
+										<a href="#" data-toggle="messenger-content" class="messenger-link active">
+											<div class="messenger-media bg-theme text-theme-color rounded-pill fs-24px fw-bold">
+												<i class="bi bi-android2"></i>
+											</div>
+											<div class="messenger-info">
+												<div class="messenger-name">BockLit ransom chat</div>
+												<div class="messenger-text">our wallet address 0xdeadbeef</div>
+											</div>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="messenger-content">
+							<div class="messenger-content-header">
+								<div class="messenger-content-header-mobile-toggler">
+									<a href="#" data-toggle="messenger-content" class="me-2">
+									<i class="bi bi-chevron-left"></i>
+									</a>
+								</div>
+								<div class="messenger-content-header-media">
+									<div class="media bg-theme text-theme-color rounded-pill fs-24px fw-bold">
+										<i class="bi bi-android2"></i>
+									</div>
+								</div>
+								<div class="messenger-content-header-info">
+									BockLit ransom chat
+									<small>our wallet address 0xdeadbeef</small>
+								</div>
+							</div>
+							<div class="messenger-content-body">
+								<div data-scrollbar="true" data-height="100%">
+									<div class="widget-chat" id="chats">
+										<div class="widget-chat-date">TODAY</div>
+										<!-- Received messages will be added here -->
+									</div>
+								</div>
+							</div>
+							<div class="messenger-content-footer">
+								<form id="sendMessageForm">
+									<div class="input-group input-group-lg position-relative z-3">
+										<input type="text" class="form-control rounded-start ps-45px" id="messageInput" placeholder="Write a message...">
+										<button class="btn btn-outline-default" type="submit"><i class="fa fa-paper-plane text-muted"></i></button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="/app/assets/js/vendor.min.js"></script>
+		<script src="/app/assets/js/app.min.js"></script>
+
+		<script src="/app/assets/plugins/jvectormap-next/jquery-jvectormap.min.js"></script>
+		<script src="/app/assets/plugins/jvectormap-content/world-mill.js"></script>
+		<script src="/app/assets/plugins/apexcharts/dist/apexcharts.min.js"></script>
+
+		<script>
+			// Function to retrieve messages from the server
+			function retrieveMessages() {
+				$.ajax({
+					url: '/messages',
+					type: 'GET',
+					xhrFields: {
+						withCredentials: true
+					},
+					success: function(messages) {
+						$('#chats').empty();
+						// Process and display messages in the chat interface
+						messages.forEach(function(message) {
+							receiveMessage(message.content, message.source_id, message.date, message.id);
+						});
+					},
+					error: function(xhr, status, error) {
+						console.error('Error retrieving messages:', error);
+						// Optionally, you can display an error message to the user
+					}
+				});
+			}
+
+			// Function to receive messages and display them
+			function receiveMessage(message, messageSourceId, messageDate, messageId) {
+				// Construct HTML based on message type
+				var messageHTML = '';
+				if (messageSourceId === 1) {
+					messageHTML += `<div class="widget-chat-item reply">
+						<div class="widget-chat-content">
+							<div class="widget-chat-message last">${message}</div>
+							<div class="widget-chat-status">${messageDate}</div>
+						</div>
+					</div>`;
+				} else {
+					messageHTML += `<div class="widget-chat-item">
+						<div class="widget-chat-content">
+							<span class="delete-message">
+								<i class="bi bi-trash fs-14px my-n1 me-2" onclick="deleteMessage('${messageId}')"></i>
+							</span>
+							<div class="widget-chat-message last">${message}</div>
+							<div class="widget-chat-status">${messageDate}</div>
+						</div>
+					</div>`;
+				}
+
+				// Append message to the chat interface
+				$('#chats').append(messageHTML);
+			}
+
+
+			// Function to handle deleting a message
+			function deleteMessage(messageId) {
+				// Send DELETE request to delete the message
+				$.ajax({
+					url: '/messages/' + messageId,
+					type: 'DELETE',
+					success: function(response) {
+						// Optionally, you can update the chat interface or display a success message
+						console.log('Message deleted successfully');
+						retrieveMessages();
+					},
+					error: function(xhr, status, error) {
+						console.error('Error deleting message:', error);
+						// Optionally, you can display an error message to the user
+					}
+				});
+			};
+
+			$(document).ready(function() {
+				// Listen for form submission
+				$('#sendMessageForm').submit(function(event) {
+					event.preventDefault(); // Prevent default form submission
+
+					// Get message content
+					var messageContent = $('#messageInput').val();
+
+					// Send message via AJAX POST request
+					$.ajax({
+						url: '/messages',
+						type: 'POST',
+						data: {
+							content: messageContent,
+							destination_username: "admin"
+						},
+						xhrFields: {
+							withCredentials: true
+						},
+						success: function(response) {
+							// Clear message input field after successful sending
+							$('#messageInput').val('');
+							// Optionally, you can update the chat interface here if needed
+						},
+						error: function(xhr, status, error) {
+							console.error('Error sending message:', error);
+							// Optionally, you can display an error message to the user
+						}
+					});
+				});
+
+				// Retrieve messages periodically (e.g., every 5 seconds)
+				setInterval(retrieveMessages, 5000);
+
+				// Initial retrieval of messages
+				retrieveMessages();
+			});
+		</script>
+	</body>
+</html>

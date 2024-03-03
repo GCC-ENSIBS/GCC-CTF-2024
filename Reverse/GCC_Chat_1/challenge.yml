@@ -1,0 +1,36 @@
+name: GCC_Chat 1/2
+author: Al-oxos
+# Crypto ; Web3 ; Web ; Reverse ; Forensic ; Misc ; OSINT ; Pwn
+category: Reverse
+description: |-
+  One of our members made an android application so that we can discuss and prepare the CTF safely and confidentially.
+  
+  However, to avoid having to create an account for each person, it seems that one account has been shared with all the members and hidden somewhere in the app...
+
+  Author: Al-oxos
+
+# Do not touch that, dynamic scoring is used.
+value: 500
+type: dynamic
+extra:
+  initial: 500
+  decay: 55
+  minimum: 100
+
+flags:
+- GCC{C0ngr4tz_f0r_th1s_f1rst_fl4g_y0ung_R3vers3r}
+
+# Tags are : 1. Difficulty (Intro, Easy, Medium, Hard, Insane) ; 2. General theme (no spoil) ; 3. Author
+tags:
+- Easy
+- Android
+- Al-oxos
+
+# Can and should be remove if not used
+files:
+- dist/GCC_Chat.apk
+
+# More info : https://github.com/CTFd/ctfcli/blob/master/ctfcli/spec/challenge-example.yml
+
+# Do not touch, ctf-cli related
+version: '0.1'

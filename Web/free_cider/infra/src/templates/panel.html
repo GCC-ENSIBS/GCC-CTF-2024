@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" class="uk-background-custom">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/uikit.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+    <script src="{{ url_for('static', filename='js/uikit.min.js') }}" nonce="{{nonce}}"></script>
+    <script src="{{ url_for('static', filename='js/uikit-icons.min.js') }}" nonce="{{nonce}}"></script>
+    <title>GCC - Panel</title>
+</head>
+
+<body>
+    <div class="uk-height-auto uk-position-center uk-background-muted">
+        <div class="uk-margin-auto uk-card uk-card-default uk-card-body form-container uk-animation-fade uk-width-large">
+            <div class="uk-card-header uk-margin-bottom">
+                <h3 class="uk-card-title uk-text-center">Welcome to the GCC free Cider panel</h3>
+                <h1 class="uk-text-center">🍏🍺</h1>
+            </div>
+            {% if showFlag %}
+            <button class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom" onclick="alert('Well done : {{flag}}')">Get free cider</button>
+            {% else %}
+            <p class="uk-text-center">You are not admin, the free cider is only open to them for now !</p>
+            {% endif %}
+            <hr>
+            <div class="uk-text-center">
+                {% if showFlag %}
+                <p>Made with ❤️ by Mika</p>
+                {% endif %}
+                <a href="{{url_for('logout')}}" class="uk-link-muted">logout</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

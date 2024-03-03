@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+   <head>
+      <meta charset="utf-8">
+      <title>HUD | Login</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content>
+      <meta name="author" content>
+      <link href="/app/assets/css/vendor.min.css" rel="stylesheet">
+      <link href="/app/assets/css/app.min.css" rel="stylesheet">
+   </head>
+   <body class="pace-top theme-red">
+      <div id="app" class="app app-full-height app-without-header">
+         <div class="login">
+            {% include "./partials/flash.html" %}
+            <div class="login-content">
+               <form action="/login" method="POST" name="login_form">
+                  <h1 class="text-center">Sign In</h1>
+                  <div class="text-inverse text-opacity-50 text-center mb-4">
+                     For your protection, please verify your identity.
+                  </div>
+                  <div class="mb-3">
+                     <label class="form-label">Username <span class="text-danger">*</span></label>
+                     <input type="text" id="username" name="username" class="form-control form-control-lg bg-inverse bg-opacity-5" value placeholder>
+                  </div>
+                  <div class="mb-3">
+                     <div class="d-flex">
+                        <label class="form-label">Password <span class="text-danger">*</span></label>
+                     </div>
+                     <input type="password" id="password" name="password" class="form-control form-control-lg bg-inverse bg-opacity-5" value placeholder>
+                  </div>
+                  <div class="mb-3">
+                     <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value id="customCheck1">
+                        <label class="form-check-label" for="customCheck1">Remember me</label>
+                     </div>
+                  </div>
+                  <button id="submit" type="submit" class="btn btn-outline-theme btn-lg d-block w-100 fw-500 mb-3">Sign In</button>
+                  <div class="text-center text-inverse text-opacity-50">
+                     Don't have an account yet? <a href="/register">Sign up</a>.
+                  </div>
+               </form>
+            </div>
+         </div>
+      <script src="/app/assets/js/vendor.min.js" type="0f3dacfc0c79f555ab95d1cc-text/javascript"></script>
+      <script src="/app/assets/js/app.min.js" type="0f3dacfc0c79f555ab95d1cc-text/javascript"></script>
+   </body>
+</html>

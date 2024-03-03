@@ -1,0 +1,36 @@
+name: Array programming rocks
+author: Shynif
+# Crypto ; Web3 ; Web ; Reverse ; Forensic ; Misc ; OSINT ; Pwn
+category: Reverse
+description: |-
+  Ooooooooohhhhh omg look~at himm Ohhh 🥺🫶🏻✨
+  he soooo ✨cute✨, so tiiiinyyyyyyyyy 😭💖
+  How can you not reverse it? 🥺🙀💔
+
+  Author: [Shynif](https://antoine.rocks)
+
+# Do not touch that, dynamic scoring is used.
+value: 500
+type: dynamic
+extra:
+  initial: 500
+  decay: 55 
+  minimum: 100
+
+flags:
+- GCC{1_L0v3_Th15_sT4ck_ba5eD_M4dN355}
+
+# Tags are : 1. Difficulty (Intro, Easy, Medium, Hard, Insane) ; 2. General theme (no spoil) ; 3. Author
+tags:
+- Easy
+- ArrayProgramming
+- Shynif
+
+# Can and should be remove if not used
+files:
+- dist/chall.ua
+
+# More info : https://github.com/CTFd/ctfcli/blob/master/ctfcli/spec/challenge-example.yml
+
+# Do not touch, ctf-cli related
+version: '0.1'

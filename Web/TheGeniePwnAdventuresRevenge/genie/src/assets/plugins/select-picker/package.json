@@ -1,0 +1,55 @@
+{
+  "name": "select-picker",
+  "version": "0.3.2",
+  "description": "Multi-select tags like picker as plugin for jQuery",
+  "main": "js/picker.js",
+  "directories": {
+    "example": "examples"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AuHau/select-picker.git"
+  },
+  "keywords": [
+    "js",
+    "multiselect",
+    "tags",
+    "jquery-plugin",
+    "ecosystem:jquery"
+  ],
+  "author": "Adam Uhlir <hello@adam-uhlir.me>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AuHau/select-picker#issues"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS",
+    "test-chrome": "./node_modules/.bin/karma start --single-run --browsers Chrome_custom",
+    "test-debug": "./node_modules/.bin/karma start --single-run=false --debug --browsers Chrome_custom"
+  },
+  "homepage": "https://github.com/AuHau/select-picker",
+  "devDependencies": {
+    "bower": "^1.6.3",
+    "gulp": "^3.8.10",
+    "gulp-add-src": "^0.2.0",
+    "gulp-concat": "^2.4.3",
+    "gulp-ignore": "^1.2.1",
+    "gulp-less": "^3.0.3",
+    "gulp-load-plugins": "^0.8.0",
+    "gulp-minify-css": "^0.3.11",
+    "gulp-notify": "^2.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.0.2",
+    "jasmine-core": "^2.4.1",
+    "jasmine-jquery": "^2.1.1",
+    "karma": "^0.13.19",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-jasmine": "^0.3.7",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "less-plugin-autoprefix": "^1.1.0",
+    "less-plugin-clean-css": "^1.4.0",
+    "main-bower-files": "^2.4.1",
+    "merge-stream": "^1.0.0",
+    "phantomjs-prebuilt": "^2.1.3"
+  }
+}

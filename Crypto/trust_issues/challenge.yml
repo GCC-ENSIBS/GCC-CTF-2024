@@ -1,0 +1,36 @@
+name: Trust Issues
+author: PauvreTimo
+# Crypto ; Web3 ; Web ; Reverse ; Forensic ; Misc ; OSINT ; Pwn
+category: Crypto
+description: |-
+  Made with love and paranoia.
+
+  Author: [PauvreTimo](https://github.com/pauvretimo)
+
+# Do not touch that, dynamic scoring is used.
+value: 500
+type: dynamic
+extra:
+  initial: 500
+  decay: 55
+  minimum: 100
+
+flags:
+- GCC{N3ver_TruST_a_L!Br4ry_Esp3c1alLy_tHouS3_Fr0m_T!mo}
+
+# Tags are : 1. Difficulty (Intro, Easy, Medium, Hard, Insane) ; 2. General theme (no spoil) ; 3. Author
+tags:
+- Medium
+- Crypto
+- Web
+- Osint
+- Python
+- PauvreTimo
+
+# Can and should be remove if not used
+connection_info: http://challenges1.gcc-ctf.com:4002
+
+# More info : https://github.com/CTFd/ctfcli/blob/master/ctfcli/spec/challenge-example.yml
+
+# Do not touch, ctf-cli related
+version: '0.1'

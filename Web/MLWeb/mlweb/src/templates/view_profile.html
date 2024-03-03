@@ -1,0 +1,51 @@
+{% include "./partials/head.html" %}
+
+<body id="page-top">
+    <div id="wrapper">
+        {% include "./partials/sidebar.html" %}
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <div class="container-fluid">
+                    <div class="container mt-5">
+                        {% include "./partials/flash.html" %}
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Profile #{{ user.id }}</h5>
+                                <div class="form-group mt-5">
+                                    <label>Username: <strong>{{ user.username }}</strong></label>
+                                </div>
+                                <div class="form-group">
+                                    <label id="statusLabel">Status: Loading...</label>
+                                </div>
+                                <div class="form-group text-muted">
+                                    <label>Register date: {{ user.register_date }}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            {% include "./partials/bottombar.html" %}
+        </div>
+    </div>
+    {% include "./partials/footer.html" %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const statusLabel = document.getElementById("statusLabel");
+            
+            fetch('/profile/{{ user.username }}/is_logged')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.is_logged) {
+                        statusLabel.innerHTML = "Status: <strong class='text-success'>Active</strong>";
+                    } else {
+                        statusLabel.innerHTML = "Status: <strong class='text-danger'>Inactive</strong>";
+                    }
+                }
+            );
+        });
+    </script>
+</body>
+
+</html>

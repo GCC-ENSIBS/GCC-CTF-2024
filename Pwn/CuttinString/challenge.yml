@@ -1,0 +1,40 @@
+name: Cuttin'String
+author: "Drahoxx"
+# Crypto ; Web3 ; Web ; Reverse ; Forensic ; Misc ; OSINT ; Pwn
+category: Pwn
+description: |-
+  I made the lightest string cutting tool!
+  
+  Some people reported bugs, but anyway you can't exploit them as there is no libc.
+  
+  Author: [Drahoxx](https://twitter.com/50mgDrahoxx)
+
+# Do not touch that, dynamic scoring is used.
+value: 500
+type: dynamic
+extra:
+  initial: 500
+  decay: 55
+  minimum: 100
+
+flags:
+- GCC{SR0p_1s_f0r_Sup3r_R0P_Right?}
+
+# Tags are : 1. Difficulty (Intro, Easy, Medium, Hard, Insane) ; 2. General theme (no spoil) ; 3. Author
+tags:
+- Easy
+- ASM
+- "Drahoxx"
+
+files:
+- dist/chall
+- dist/chall.asm
+- dist/make.sh
+
+connection_info: nc challenges1.gcc-ctf.com 4004
+
+
+# More info : https://github.com/CTFd/ctfcli/blob/master/ctfcli/spec/challenge-example.yml
+
+# Do not touch, ctf-cli related
+version: '0.1'

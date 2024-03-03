@@ -1,0 +1,23 @@
+html * {
+    font-family: monospace !important;
+}
+
+body {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+#session {
+    color: grey;
+    display: flex;
+    justify-content: right;
+}
+
+#refresh-session {
+    cursor: pointer;
+}
+
+#main {
+    width: 40%;
+    margin: 0 auto;
+}

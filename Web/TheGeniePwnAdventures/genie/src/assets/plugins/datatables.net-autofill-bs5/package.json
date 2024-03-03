@@ -1,0 +1,49 @@
+{
+    "name": "datatables.net-autofill-bs5",
+    "description": "AutoFill for DataTables with styling for [Bootstrap5](https://getbootstrap.com/)",
+    "main": "js/autoFill.bootstrap5.js",
+    "style": "css/autoFill.bootstrap5.css",
+    "types": "./types/autoFill.bootstrap5.d.ts",
+    "version": "2.3.9",
+    "files": [
+        "css/**/*.css",
+        "js/**/*.js"
+    ],
+    "keywords": [
+        "AutoFill",
+        "Excel",
+        "Bootstrap",
+        "Bootstrap5",
+        "Datatables",
+        "jQuery",
+        "table",
+        "filter",
+        "sort"
+    ],
+    "dependencies": {
+        "datatables.net-autofill": ">=2.3.7",
+        "datatables.net-bs5": ">=1.10.25",
+        "jquery": ">=1.7"
+    },
+    "moduleType": [
+        "globals",
+        "amd",
+        "node"
+    ],
+    "ignore": [
+        "composer.json",
+        "datatables.json",
+        "package.json"
+    ],
+    "author": {
+        "name": "SpryMedia Ltd",
+        "url": "http://datatables.net"
+    },
+    "homepage": "https://datatables.net",
+    "bugs": "https://datatables.net/forums",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DataTables/Dist-DataTables-AutoFill-Bootstrap5.git"
+    }
+}

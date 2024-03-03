@@ -1,0 +1,37 @@
+name: Find The Compass
+author: Mika
+# Crypto ; Web3 ; Web ; Reverse ; Forensic ; Misc ; OSINT ; Pwn
+category: Web
+description: |-
+  Agent, they have stolen our precious compass! These thieves are professionals but we have managed to find their panel online. We need you to find the compass and bring it back to us.
+
+  Author: [Mika](https://twitter.com/bWlrYQ)
+
+# Do not touch that, dynamic scoring is used.
+value: 500
+type: dynamic
+extra:
+  initial: 500
+  decay: 55
+  minimum: 100
+
+flags:
+- GCC{iThink_we_Sh0ul_sT1cK_t0_Jinj4_and_4v0id_w3ak_KEYS!}
+
+# Tags are : 1. Difficulty (Intro, Easy, Medium, Hard, Insane) ; 2. General theme (no spoil) ; 3. Author
+tags:
+- Easy
+- Web
+- Whitebox
+- Mika
+
+connection_info: https://deploy.gcc-ctf.com/
+
+# Can and should be remove if not used
+files:
+- dist/ftc.zip
+
+# More info : https://github.com/CTFd/ctfcli/blob/master/ctfcli/spec/challenge-example.yml
+
+# Do not touch, ctf-cli related
+version: '0.1'

@@ -1,0 +1,1 @@
+#define CONFIG_STATIC_LIBGCC 1

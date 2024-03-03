@@ -1,0 +1,5 @@
+Flask
+selenium
+Flask-SQLAlchemy
+Werkzeug
+requests

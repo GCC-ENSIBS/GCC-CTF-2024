@@ -1,0 +1,11 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+
+# EVM version
+evm_version = "cancun"
+# Version to compile with
+solc_version = "0.8.24"
+
+# See more config options https://github.com/foundry-rs/foundry/tree/master/config

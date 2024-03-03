@@ -1,0 +1,2 @@
+.venv/*
+./freechat/instance/*.db

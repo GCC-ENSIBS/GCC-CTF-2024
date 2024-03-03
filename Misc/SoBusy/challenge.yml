@@ -1,0 +1,37 @@
+name: SoBusy
+author: Drahoxx
+# Crypto ; Web3 ; Web ; Reverse ; Forensic ; Misc ; OSINT ; Pwn
+category: Misc
+description: |-
+  Some guy connected to the main production server during his last day of work at the GCC Corp.
+  It seems odd, doesn't it? Could you check please?
+
+  Your job is to elevate your privileges to `root` and read the flag located in `/root/flag.txt`.
+  Credentials: `gccprod:gccprod123!` 
+  
+  Author: [Drahoxx](https://twitter.com/50mgDrahoxx)
+
+# Do not touch that, dynamic scoring is used.
+value: 500
+type: dynamic
+extra:
+  initial: 500
+  decay: 55
+  minimum: 100
+
+flags:
+- GCC{BusyBox_H4s_M0r3_Opti0ns_Th4n_LS}
+
+# Tags are : 1. Difficulty (Intro, Easy, Medium, Hard, Insane) ; 2. General theme (no spoil) ; 3. Author
+tags:
+- Easy
+- PrivEsc
+- Drahoxx
+
+# Can and should be remove if not used
+connection_info: https://deploy.gcc-ctf.com/ 
+
+# More info : https://github.com/CTFd/ctfcli/blob/master/ctfcli/spec/challenge-example.yml
+
+# Do not touch, ctf-cli related
+version: '0.1'

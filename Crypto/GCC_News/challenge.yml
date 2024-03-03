@@ -1,0 +1,36 @@
+name: GCC News
+author: TheoR
+# Crypto ; Web3 ; Web ; Reverse ; Forensic ; Misc ; OSINT ; Pwn
+category: Crypto
+description: |-
+  We've launched a brand new website with lots of articles about CTF world. 
+  Can you access it as a subscriber?  
+
+  Author: TheoR
+
+# Do not touch that, dynamic scoring is used.
+value: 500
+type: dynamic
+extra:
+  initial: 500
+  decay: 55
+  minimum: 100
+
+flags:
+- GCC{f1x3d_533d_d154bl3_r4nd0mn355}
+
+# Tags are : 1. Difficulty (Intro, Easy, Medium, Hard, Insane) ; 2. General theme (no spoil) ; 3. Author
+tags:
+- Easy
+- Authentication
+- TheoR
+
+# Can and should be remove if not used
+connection_info: https://deploy.gcc-ctf.com/
+files:
+- dist/app.py
+
+# More info : https://github.com/CTFd/ctfcli/blob/master/ctfcli/spec/challenge-example.yml
+
+# Do not touch, ctf-cli related
+version: '0.1'

@@ -1,0 +1,1747 @@
+Output of:
+gcc -malign-data=abi -Wall -Wshadow -Wwrite-strings -Wundef -Wstrict-prototypes -Wunused -Wunused-parameter -Wunused-function -Wunused-value -Wmissing-prototypes -Wmissing-declarations -Wno-format-security -Wdeclaration-after-statement -Wold-style-definition -finline-limit=0 -fno-builtin-strlen -fomit-frame-pointer -ffunction-sections -fdata-sections -fno-guess-branch-probability -funsigned-char -static-libgcc -falign-functions=1 -falign-jumps=1 -falign-labels=1 -falign-loops=1 -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-builtin-printf -Oz -static -o busybox_unstripped -Wl,--sort-common -Wl,--sort-section,alignment -Wl,--start-group applets/built-in.o archival/lib.a archival/libarchive/lib.a console-tools/lib.a coreutils/lib.a coreutils/libcoreutils/lib.a debianutils/lib.a klibc-utils/lib.a e2fsprogs/lib.a editors/lib.a findutils/lib.a init/lib.a libbb/lib.a libpwdgrp/lib.a loginutils/lib.a mailutils/lib.a miscutils/lib.a modutils/lib.a networking/lib.a networking/libiproute/lib.a networking/udhcp/lib.a printutils/lib.a procps/lib.a runit/lib.a selinux/lib.a shell/lib.a sysklogd/lib.a util-linux/lib.a util-linux/volume_id/lib.a archival/built-in.o archival/libarchive/built-in.o console-tools/built-in.o coreutils/built-in.o coreutils/libcoreutils/built-in.o debianutils/built-in.o klibc-utils/built-in.o e2fsprogs/built-in.o editors/built-in.o findutils/built-in.o init/built-in.o libbb/built-in.o libpwdgrp/built-in.o loginutils/built-in.o mailutils/built-in.o miscutils/built-in.o modutils/built-in.o networking/built-in.o networking/libiproute/built-in.o networking/udhcp/built-in.o printutils/built-in.o procps/built-in.o runit/built-in.o selinux/built-in.o shell/built-in.o sysklogd/built-in.o util-linux/built-in.o util-linux/volume_id/built-in.o -Wl,--end-group -Wl,--warn-common -Wl,-Map,busybox_unstripped.map -Wl,--verbose
+==========
+GNU ld (GNU Binutils for Ubuntu) 2.41
+  Émulations prises en charge :
+   elf_x86_64
+   elf32_x86_64
+   elf_i386
+   elf_iamcu
+   i386pep
+   i386pe
+utilisation du script interne d'édition de liens :
+==================================================
+/* Script for -z combreloc -z separate-code */
+/* Copyright (C) 2014-2023 Free Software Foundation, Inc.
+   Copying and distribution of this script, with or without modification,
+   are permitted in any medium without royalty provided the copyright
+   notice and this notice are preserved.  */
+OUTPUT_FORMAT("elf64-x86-64", "elf64-x86-64",
+	      "elf64-x86-64")
+OUTPUT_ARCH(i386:x86-64)
+ENTRY(_start)
+SEARCH_DIR("=/usr/local/lib/x86_64-linux-gnu"); SEARCH_DIR("=/lib/x86_64-linux-gnu"); SEARCH_DIR("=/usr/lib/x86_64-linux-gnu"); SEARCH_DIR("=/usr/lib/x86_64-linux-gnu64"); SEARCH_DIR("=/usr/local/lib64"); SEARCH_DIR("=/lib64"); SEARCH_DIR("=/usr/lib64"); SEARCH_DIR("=/usr/local/lib"); SEARCH_DIR("=/lib"); SEARCH_DIR("=/usr/lib"); SEARCH_DIR("=/usr/x86_64-linux-gnu/lib64"); SEARCH_DIR("=/usr/x86_64-linux-gnu/lib");
+SECTIONS
+{
+  PROVIDE (__executable_start = SEGMENT_START("text-segment", 0x400000)); . = SEGMENT_START("text-segment", 0x400000) + SIZEOF_HEADERS;
+  .interp         : { *(.interp) }
+  .note.gnu.build-id  : { *(.note.gnu.build-id) }
+  .hash           : { *(.hash) }
+  .gnu.hash       : { *(.gnu.hash) }
+  .dynsym         : { *(.dynsym) }
+  .dynstr         : { *(.dynstr) }
+  .gnu.version    : { *(.gnu.version) }
+  .gnu.version_d  : { *(.gnu.version_d) }
+  .gnu.version_r  : { *(.gnu.version_r) }
+  .rela.dyn       :
+    {
+      *(.rela.init)
+      *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+      *(.rela.fini)
+      *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+      *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+      *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+      *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+      *(.rela.ctors)
+      *(.rela.dtors)
+      *(.rela.got)
+      *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+      *(.rela.ldata .rela.ldata.* .rela.gnu.linkonce.l.*)
+      *(.rela.lbss .rela.lbss.* .rela.gnu.linkonce.lb.*)
+      *(.rela.lrodata .rela.lrodata.* .rela.gnu.linkonce.lr.*)
+      *(.rela.ifunc)
+    }
+  .rela.plt       :
+    {
+      *(.rela.plt)
+      PROVIDE_HIDDEN (__rela_iplt_start = .);
+      *(.rela.iplt)
+      PROVIDE_HIDDEN (__rela_iplt_end = .);
+    }
+  .relr.dyn : { *(.relr.dyn) }
+  . = ALIGN(CONSTANT (MAXPAGESIZE));
+  .init           :
+  {
+    KEEP (*(SORT_NONE(.init)))
+  }
+  .plt            : { *(.plt) *(.iplt) }
+.plt.got        : { *(.plt.got) }
+.plt.sec        : { *(.plt.sec) }
+  .text           :
+  {
+    *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+    *(.text.exit .text.exit.*)
+    *(.text.startup .text.startup.*)
+    *(.text.hot .text.hot.*)
+    *(SORT(.text.sorted.*))
+    *(.text .stub .text.* .gnu.linkonce.t.*)
+    /* .gnu.warning sections are handled specially by elf.em.  */
+    *(.gnu.warning)
+  }
+  .fini           :
+  {
+    KEEP (*(SORT_NONE(.fini)))
+  }
+  PROVIDE (__etext = .);
+  PROVIDE (_etext = .);
+  PROVIDE (etext = .);
+  . = ALIGN(CONSTANT (MAXPAGESIZE));
+  /* Adjust the address for the rodata segment.  We want to adjust up to
+     the same address within the page on the next page up.  */
+  . = SEGMENT_START("rodata-segment", ALIGN(CONSTANT (MAXPAGESIZE)) + (. & (CONSTANT (MAXPAGESIZE) - 1)));
+  .rodata         : { *(.rodata .rodata.* .gnu.linkonce.r.*) }
+  .rodata1        : { *(.rodata1) }
+  .eh_frame_hdr   : { *(.eh_frame_hdr) *(.eh_frame_entry .eh_frame_entry.*) }
+  .eh_frame       : ONLY_IF_RO { KEEP (*(.eh_frame)) *(.eh_frame.*) }
+  .sframe         : ONLY_IF_RO { *(.sframe) *(.sframe.*) }
+  .gcc_except_table   : ONLY_IF_RO { *(.gcc_except_table .gcc_except_table.*) }
+  .gnu_extab   : ONLY_IF_RO { *(.gnu_extab*) }
+  /* These sections are generated by the Sun/Oracle C++ compiler.  */
+  .exception_ranges   : ONLY_IF_RO { *(.exception_ranges*) }
+  /* Adjust the address for the data segment.  We want to adjust up to
+     the same address within the page on the next page up.  */
+  . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE));
+  /* Exception handling  */
+  .eh_frame       : ONLY_IF_RW { KEEP (*(.eh_frame)) *(.eh_frame.*) }
+  .sframe         : ONLY_IF_RW { *(.sframe) *(.sframe.*) }
+  .gnu_extab      : ONLY_IF_RW { *(.gnu_extab) }
+  .gcc_except_table   : ONLY_IF_RW { *(.gcc_except_table .gcc_except_table.*) }
+  .exception_ranges   : ONLY_IF_RW { *(.exception_ranges*) }
+  /* Thread Local Storage sections  */
+  .tdata	  :
+   {
+     PROVIDE_HIDDEN (__tdata_start = .);
+     *(.tdata .tdata.* .gnu.linkonce.td.*)
+   }
+  .tbss		  : { *(.tbss .tbss.* .gnu.linkonce.tb.*) *(.tcommon) }
+  .preinit_array    :
+  {
+    PROVIDE_HIDDEN (__preinit_array_start = .);
+    KEEP (*(.preinit_array))
+    PROVIDE_HIDDEN (__preinit_array_end = .);
+  }
+  .init_array    :
+  {
+    PROVIDE_HIDDEN (__init_array_start = .);
+    KEEP (*(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*)))
+    KEEP (*(.init_array EXCLUDE_FILE (*crtbegin.o *crtbegin?.o *crtend.o *crtend?.o ) .ctors))
+    PROVIDE_HIDDEN (__init_array_end = .);
+  }
+  .fini_array    :
+  {
+    PROVIDE_HIDDEN (__fini_array_start = .);
+    KEEP (*(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*)))
+    KEEP (*(.fini_array EXCLUDE_FILE (*crtbegin.o *crtbegin?.o *crtend.o *crtend?.o ) .dtors))
+    PROVIDE_HIDDEN (__fini_array_end = .);
+  }
+  .ctors          :
+  {
+    /* gcc uses crtbegin.o to find the start of
+       the constructors, so we make sure it is
+       first.  Because this is a wildcard, it
+       doesn't matter if the user does not
+       actually link against crtbegin.o; the
+       linker won't look for a file to match a
+       wildcard.  The wildcard also means that it
+       doesn't matter which directory crtbegin.o
+       is in.  */
+    KEEP (*crtbegin.o(.ctors))
+    KEEP (*crtbegin?.o(.ctors))
+    /* We don't want to include the .ctor section from
+       the crtend.o file until after the sorted ctors.
+       The .ctor section from the crtend file contains the
+       end of ctors marker and it must be last */
+    KEEP (*(EXCLUDE_FILE (*crtend.o *crtend?.o ) .ctors))
+    KEEP (*(SORT(.ctors.*)))
+    KEEP (*(.ctors))
+  }
+  .dtors          :
+  {
+    KEEP (*crtbegin.o(.dtors))
+    KEEP (*crtbegin?.o(.dtors))
+    KEEP (*(EXCLUDE_FILE (*crtend.o *crtend?.o ) .dtors))
+    KEEP (*(SORT(.dtors.*)))
+    KEEP (*(.dtors))
+  }
+  .jcr            : { KEEP (*(.jcr)) }
+  .data.rel.ro : { *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*) *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*) }
+  .dynamic        : { *(.dynamic) }
+  .got            : { *(.got) *(.igot) }
+  . = DATA_SEGMENT_RELRO_END (SIZEOF (.got.plt) >= 24 ? 24 : 0, .);
+  .got.plt        : { *(.got.plt) *(.igot.plt) }
+  .data           :
+  {
+    *(.data .data.* .gnu.linkonce.d.*)
+    SORT(CONSTRUCTORS)
+  }
+  .data1          : { *(.data1) }
+  _edata = .; PROVIDE (edata = .);
+  . = .;
+  __bss_start = .;
+  .bss            :
+  {
+   *(.dynbss)
+   *(.bss .bss.* .gnu.linkonce.b.*)
+   *(COMMON)
+   /* Align here to ensure that the .bss section occupies space up to
+      _end.  Align after .bss to ensure correct alignment even if the
+      .bss section disappears because there are no input sections.
+      FIXME: Why do we need it? When there is no .bss section, we do not
+      pad the .data section.  */
+   . = ALIGN(. != 0 ? 64 / 8 : 1);
+  }
+  .lbss   :
+  {
+    *(.dynlbss)
+    *(.lbss .lbss.* .gnu.linkonce.lb.*)
+    *(LARGE_COMMON)
+  }
+  . = ALIGN(64 / 8);
+  . = SEGMENT_START("ldata-segment", .);
+  .lrodata   ALIGN(CONSTANT (MAXPAGESIZE)) + (. & (CONSTANT (MAXPAGESIZE) - 1)) :
+  {
+    *(.lrodata .lrodata.* .gnu.linkonce.lr.*)
+  }
+  .ldata   ALIGN(CONSTANT (MAXPAGESIZE)) + (. & (CONSTANT (MAXPAGESIZE) - 1)) :
+  {
+    *(.ldata .ldata.* .gnu.linkonce.l.*)
+    . = ALIGN(. != 0 ? 64 / 8 : 1);
+  }
+  . = ALIGN(64 / 8);
+  _end = .; PROVIDE (end = .);
+  . = DATA_SEGMENT_END (.);
+  /* Stabs debugging sections.  */
+  .stab          0 : { *(.stab) }
+  .stabstr       0 : { *(.stabstr) }
+  .stab.excl     0 : { *(.stab.excl) }
+  .stab.exclstr  0 : { *(.stab.exclstr) }
+  .stab.index    0 : { *(.stab.index) }
+  .stab.indexstr 0 : { *(.stab.indexstr) }
+  .comment 0 (INFO) : { *(.comment); LINKER_VERSION; }
+  .gnu.build.attributes : { *(.gnu.build.attributes .gnu.build.attributes.*) }
+  /* DWARF debug sections.
+     Symbols in the DWARF debugging sections are relative to the beginning
+     of the section so we begin them at 0.  */
+  /* DWARF 1.  */
+  .debug          0 : { *(.debug) }
+  .line           0 : { *(.line) }
+  /* GNU DWARF 1 extensions.  */
+  .debug_srcinfo  0 : { *(.debug_srcinfo) }
+  .debug_sfnames  0 : { *(.debug_sfnames) }
+  /* DWARF 1.1 and DWARF 2.  */
+  .debug_aranges  0 : { *(.debug_aranges) }
+  .debug_pubnames 0 : { *(.debug_pubnames) }
+  /* DWARF 2.  */
+  .debug_info     0 : { *(.debug_info .gnu.linkonce.wi.*) }
+  .debug_abbrev   0 : { *(.debug_abbrev) }
+  .debug_line     0 : { *(.debug_line .debug_line.* .debug_line_end) }
+  .debug_frame    0 : { *(.debug_frame) }
+  .debug_str      0 : { *(.debug_str) }
+  .debug_loc      0 : { *(.debug_loc) }
+  .debug_macinfo  0 : { *(.debug_macinfo) }
+  /* SGI/MIPS DWARF 2 extensions.  */
+  .debug_weaknames 0 : { *(.debug_weaknames) }
+  .debug_funcnames 0 : { *(.debug_funcnames) }
+  .debug_typenames 0 : { *(.debug_typenames) }
+  .debug_varnames  0 : { *(.debug_varnames) }
+  /* DWARF 3.  */
+  .debug_pubtypes 0 : { *(.debug_pubtypes) }
+  .debug_ranges   0 : { *(.debug_ranges) }
+  /* DWARF 5.  */
+  .debug_addr     0 : { *(.debug_addr) }
+  .debug_line_str 0 : { *(.debug_line_str) }
+  .debug_loclists 0 : { *(.debug_loclists) }
+  .debug_macro    0 : { *(.debug_macro) }
+  .debug_names    0 : { *(.debug_names) }
+  .debug_rnglists 0 : { *(.debug_rnglists) }
+  .debug_str_offsets 0 : { *(.debug_str_offsets) }
+  .debug_sup      0 : { *(.debug_sup) }
+  .gnu.attributes 0 : { KEEP (*(.gnu.attributes)) }
+  /DISCARD/ : { *(.note.GNU-stack) *(.gnu_debuglink) *(.gnu.lto_*) }
+}
+
+
+==================================================
+/usr/bin/ld : mode elf_x86_64
+succès de la tentative d'ouverture de /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crt1.o
+/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crt1.o
+succès de la tentative d'ouverture de /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o
+/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o
+succès de la tentative d'ouverture de /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginT.o
+/usr/lib/gcc/x86_64-linux-gnu/13/crtbeginT.o
+succès de la tentative d'ouverture de applets/built-in.o
+applets/built-in.o
+succès de la tentative d'ouverture de archival/lib.a
+archival/lib.a
+succès de la tentative d'ouverture de archival/libarchive/lib.a
+archival/libarchive/lib.a
+succès de la tentative d'ouverture de console-tools/lib.a
+console-tools/lib.a
+succès de la tentative d'ouverture de coreutils/lib.a
+coreutils/lib.a
+succès de la tentative d'ouverture de coreutils/libcoreutils/lib.a
+coreutils/libcoreutils/lib.a
+succès de la tentative d'ouverture de debianutils/lib.a
+debianutils/lib.a
+succès de la tentative d'ouverture de klibc-utils/lib.a
+klibc-utils/lib.a
+succès de la tentative d'ouverture de e2fsprogs/lib.a
+e2fsprogs/lib.a
+succès de la tentative d'ouverture de editors/lib.a
+editors/lib.a
+succès de la tentative d'ouverture de findutils/lib.a
+findutils/lib.a
+succès de la tentative d'ouverture de init/lib.a
+init/lib.a
+succès de la tentative d'ouverture de libbb/lib.a
+libbb/lib.a
+(libbb/lib.a)appletlib.o
+(libbb/lib.a)compare_string_array.o
+(libbb/lib.a)default_error_retval.o
+(libbb/lib.a)get_last_path_component.o
+(libbb/lib.a)last_char_is.o
+(libbb/lib.a)messages.o
+(libbb/lib.a)ptr_to_globals.o
+(libbb/lib.a)xfunc_die.o
+(libbb/lib.a)xfuncs.o
+(libbb/lib.a)full_write.o
+(libbb/lib.a)safe_write.o
+succès de la tentative d'ouverture de libpwdgrp/lib.a
+libpwdgrp/lib.a
+succès de la tentative d'ouverture de loginutils/lib.a
+loginutils/lib.a
+(loginutils/lib.a)add-remove-shell.o
+(loginutils/lib.a)addgroup.o
+(loginutils/lib.a)adduser.o
+(loginutils/lib.a)chpasswd.o
+(loginutils/lib.a)cryptpw.o
+(loginutils/lib.a)deluser.o
+(loginutils/lib.a)getty.o
+(loginutils/lib.a)login.o
+(loginutils/lib.a)passwd.o
+(loginutils/lib.a)su.o
+(loginutils/lib.a)sulogin.o
+(loginutils/lib.a)vlock.o
+succès de la tentative d'ouverture de mailutils/lib.a
+mailutils/lib.a
+succès de la tentative d'ouverture de miscutils/lib.a
+miscutils/lib.a
+(miscutils/lib.a)ascii.o
+(miscutils/lib.a)bc.o
+(miscutils/lib.a)beep.o
+(miscutils/lib.a)hexedit.o
+(miscutils/lib.a)less.o
+(miscutils/lib.a)time.o
+(miscutils/lib.a)tree.o
+succès de la tentative d'ouverture de modutils/lib.a
+modutils/lib.a
+succès de la tentative d'ouverture de networking/lib.a
+networking/lib.a
+(networking/lib.a)ip.o
+(networking/lib.a)nc.o
+(networking/lib.a)ping.o
+(networking/lib.a)pscan.o
+(networking/lib.a)wget.o
+(networking/lib.a)tls.o
+(networking/lib.a)tls_aes.o
+(networking/lib.a)tls_aesgcm.o
+(networking/lib.a)tls_fe.o
+(networking/lib.a)tls_pstm.o
+(networking/lib.a)tls_pstm_montgomery_reduce.o
+(networking/lib.a)tls_pstm_mul_comba.o
+(networking/lib.a)tls_pstm_sqr_comba.o
+(networking/lib.a)tls_rsa.o
+(networking/lib.a)tls_sp_c32.o
+succès de la tentative d'ouverture de networking/libiproute/lib.a
+networking/libiproute/lib.a
+(networking/libiproute/lib.a)ip_parse_common_args.o
+(networking/libiproute/lib.a)ipaddress.o
+(networking/libiproute/lib.a)iplink.o
+(networking/libiproute/lib.a)iproute.o
+(networking/libiproute/lib.a)iptunnel.o
+(networking/libiproute/lib.a)libnetlink.o
+(networking/libiproute/lib.a)ll_addr.o
+(networking/libiproute/lib.a)ll_map.o
+(networking/libiproute/lib.a)ll_types.o
+(networking/libiproute/lib.a)rt_names.o
+(networking/libiproute/lib.a)rtm_map.o
+(networking/libiproute/lib.a)utils.o
+succès de la tentative d'ouverture de networking/udhcp/lib.a
+networking/udhcp/lib.a
+succès de la tentative d'ouverture de printutils/lib.a
+printutils/lib.a
+(printutils/lib.a)lpd.o
+(printutils/lib.a)lpr.o
+succès de la tentative d'ouverture de procps/lib.a
+procps/lib.a
+(procps/lib.a)free.o
+(procps/lib.a)fuser.o
+(procps/lib.a)iostat.o
+(procps/lib.a)kill.o
+(procps/lib.a)lsof.o
+(procps/lib.a)mpstat.o
+(procps/lib.a)nmeter.o
+(procps/lib.a)pgrep.o
+(procps/lib.a)pidof.o
+(procps/lib.a)pmap.o
+(procps/lib.a)powertop.o
+(procps/lib.a)ps.o
+(procps/lib.a)pstree.o
+(procps/lib.a)pwdx.o
+(procps/lib.a)smemcap.o
+(procps/lib.a)sysctl.o
+(procps/lib.a)top.o
+(procps/lib.a)uptime.o
+(procps/lib.a)watch.o
+succès de la tentative d'ouverture de runit/lib.a
+runit/lib.a
+(runit/lib.a)chpst.o
+(runit/lib.a)runsv.o
+(runit/lib.a)runsvdir.o
+(runit/lib.a)sv.o
+(runit/lib.a)svlogd.o
+succès de la tentative d'ouverture de selinux/lib.a
+selinux/lib.a
+succès de la tentative d'ouverture de shell/lib.a
+shell/lib.a
+(shell/lib.a)ash.o
+(shell/lib.a)ash_ptr_hack.o
+(shell/lib.a)cttyhack.o
+(shell/lib.a)hush.o
+(shell/lib.a)match.o
+(shell/lib.a)math.o
+(shell/lib.a)random.o
+(shell/lib.a)shell_common.o
+succès de la tentative d'ouverture de sysklogd/lib.a
+sysklogd/lib.a
+succès de la tentative d'ouverture de util-linux/lib.a
+util-linux/lib.a
+(util-linux/lib.a)dmesg.o
+(util-linux/lib.a)hexdump.o
+(util-linux/lib.a)hexdump_xxd.o
+(util-linux/lib.a)script.o
+(util-linux/lib.a)setarch.o
+(util-linux/lib.a)setpriv.o
+(util-linux/lib.a)setsid.o
+(util-linux/lib.a)switch_root.o
+succès de la tentative d'ouverture de util-linux/volume_id/lib.a
+util-linux/volume_id/lib.a
+succès de la tentative d'ouverture de archival/built-in.o
+archival/built-in.o
+succès de la tentative d'ouverture de archival/libarchive/built-in.o
+archival/libarchive/built-in.o
+succès de la tentative d'ouverture de console-tools/built-in.o
+console-tools/built-in.o
+succès de la tentative d'ouverture de coreutils/built-in.o
+coreutils/built-in.o
+succès de la tentative d'ouverture de coreutils/libcoreutils/built-in.o
+coreutils/libcoreutils/built-in.o
+succès de la tentative d'ouverture de debianutils/built-in.o
+debianutils/built-in.o
+succès de la tentative d'ouverture de klibc-utils/built-in.o
+klibc-utils/built-in.o
+succès de la tentative d'ouverture de e2fsprogs/built-in.o
+e2fsprogs/built-in.o
+succès de la tentative d'ouverture de editors/built-in.o
+editors/built-in.o
+succès de la tentative d'ouverture de findutils/built-in.o
+findutils/built-in.o
+succès de la tentative d'ouverture de init/built-in.o
+init/built-in.o
+succès de la tentative d'ouverture de libbb/built-in.o
+libbb/built-in.o
+succès de la tentative d'ouverture de libpwdgrp/built-in.o
+libpwdgrp/built-in.o
+succès de la tentative d'ouverture de loginutils/built-in.o
+loginutils/built-in.o
+succès de la tentative d'ouverture de mailutils/built-in.o
+mailutils/built-in.o
+succès de la tentative d'ouverture de miscutils/built-in.o
+miscutils/built-in.o
+succès de la tentative d'ouverture de modutils/built-in.o
+modutils/built-in.o
+succès de la tentative d'ouverture de networking/built-in.o
+networking/built-in.o
+succès de la tentative d'ouverture de networking/libiproute/built-in.o
+networking/libiproute/built-in.o
+succès de la tentative d'ouverture de networking/udhcp/built-in.o
+networking/udhcp/built-in.o
+succès de la tentative d'ouverture de printutils/built-in.o
+printutils/built-in.o
+succès de la tentative d'ouverture de procps/built-in.o
+procps/built-in.o
+succès de la tentative d'ouverture de runit/built-in.o
+runit/built-in.o
+succès de la tentative d'ouverture de selinux/built-in.o
+selinux/built-in.o
+succès de la tentative d'ouverture de shell/built-in.o
+shell/built-in.o
+succès de la tentative d'ouverture de sysklogd/built-in.o
+sysklogd/built-in.o
+succès de la tentative d'ouverture de util-linux/built-in.o
+util-linux/built-in.o
+succès de la tentative d'ouverture de util-linux/volume_id/built-in.o
+util-linux/volume_id/built-in.o
+archival/lib.a
+(archival/lib.a)chksum_and_xwrite_tar_header.o
+(archival/lib.a)gzip.o
+(archival/lib.a)tar.o
+(archival/lib.a)bbunzip.o
+archival/libarchive/lib.a
+(archival/libarchive/lib.a)data_extract_all.o
+(archival/libarchive/lib.a)data_extract_to_command.o
+(archival/libarchive/lib.a)data_extract_to_stdout.o
+(archival/libarchive/lib.a)data_skip.o
+(archival/libarchive/lib.a)decompress_bunzip2.o
+(archival/libarchive/lib.a)decompress_gunzip.o
+(archival/libarchive/lib.a)decompress_unlzma.o
+(archival/libarchive/lib.a)decompress_unxz.o
+(archival/libarchive/lib.a)filter_accept_reject_list.o
+(archival/libarchive/lib.a)find_list_entry.o
+(archival/libarchive/lib.a)get_header_tar.o
+(archival/libarchive/lib.a)header_list.o
+(archival/libarchive/lib.a)header_verbose_list.o
+(archival/libarchive/lib.a)init_handle.o
+(archival/libarchive/lib.a)open_transformer.o
+(archival/libarchive/lib.a)seek_by_jump.o
+(archival/libarchive/lib.a)seek_by_read.o
+(archival/libarchive/lib.a)unsafe_prefix.o
+(archival/libarchive/lib.a)unsafe_symlink_target.o
+(archival/libarchive/lib.a)data_align.o
+(archival/libarchive/lib.a)filter_accept_all.o
+(archival/libarchive/lib.a)header_skip.o
+console-tools/lib.a
+coreutils/lib.a
+(coreutils/lib.a)basename.o
+(coreutils/lib.a)cat.o
+(coreutils/lib.a)chgrp.o
+(coreutils/lib.a)chmod.o
+(coreutils/lib.a)chown.o
+(coreutils/lib.a)chroot.o
+(coreutils/lib.a)cksum.o
+(coreutils/lib.a)comm.o
+(coreutils/lib.a)cp.o
+(coreutils/lib.a)cut.o
+(coreutils/lib.a)date.o
+(coreutils/lib.a)dd.o
+(coreutils/lib.a)df.o
+(coreutils/lib.a)dirname.o
+(coreutils/lib.a)dos2unix.o
+(coreutils/lib.a)du.o
+(coreutils/lib.a)echo.o
+(coreutils/lib.a)env.o
+(coreutils/lib.a)expand.o
+(coreutils/lib.a)expr.o
+(coreutils/lib.a)factor.o
+(coreutils/lib.a)false.o
+(coreutils/lib.a)fold.o
+(coreutils/lib.a)head.o
+(coreutils/lib.a)hostid.o
+(coreutils/lib.a)id.o
+(coreutils/lib.a)install.o
+(coreutils/lib.a)link.o
+(coreutils/lib.a)ln.o
+(coreutils/lib.a)logname.o
+(coreutils/lib.a)ls.o
+(coreutils/lib.a)md5_sha1_sum.o
+(coreutils/lib.a)mkdir.o
+(coreutils/lib.a)mkfifo.o
+(coreutils/lib.a)mknod.o
+(coreutils/lib.a)mktemp.o
+(coreutils/lib.a)mv.o
+(coreutils/lib.a)nice.o
+(coreutils/lib.a)nl.o
+(coreutils/lib.a)nohup.o
+(coreutils/lib.a)paste.o
+(coreutils/lib.a)printenv.o
+(coreutils/lib.a)printf.o
+(coreutils/lib.a)pwd.o
+(coreutils/lib.a)readlink.o
+(coreutils/lib.a)realpath.o
+(coreutils/lib.a)rm.o
+(coreutils/lib.a)rmdir.o
+(coreutils/lib.a)seq.o
+(coreutils/lib.a)shred.o
+(coreutils/lib.a)shuf.o
+(coreutils/lib.a)sleep.o
+(coreutils/lib.a)sort.o
+(coreutils/lib.a)split.o
+(coreutils/lib.a)sum.o
+(coreutils/lib.a)sync.o
+(coreutils/lib.a)tac.o
+(coreutils/lib.a)tail.o
+(coreutils/lib.a)tee.o
+(coreutils/lib.a)test.o
+(coreutils/lib.a)test_ptr_hack.o
+(coreutils/lib.a)true.o
+(coreutils/lib.a)truncate.o
+(coreutils/lib.a)tsort.o
+(coreutils/lib.a)tty.o
+(coreutils/lib.a)uname.o
+(coreutils/lib.a)uudecode.o
+coreutils/libcoreutils/lib.a
+(coreutils/libcoreutils/lib.a)cp_mv_stat.o
+(coreutils/libcoreutils/lib.a)getopt_mk_fifo_nod.o
+debianutils/lib.a
+(debianutils/lib.a)pipe_progress.o
+(debianutils/lib.a)run_parts.o
+(debianutils/lib.a)which.o
+klibc-utils/lib.a
+e2fsprogs/lib.a
+editors/lib.a
+(editors/lib.a)vi.o
+findutils/lib.a
+(findutils/lib.a)find.o
+(findutils/lib.a)grep.o
+init/lib.a
+libbb/lib.a
+(libbb/lib.a)ask_confirmation.o
+(libbb/lib.a)auto_string.o
+(libbb/lib.a)bb_askpass.o
+(libbb/lib.a)bb_cat.o
+(libbb/lib.a)bb_do_delay.o
+(libbb/lib.a)bb_getgroups.o
+(libbb/lib.a)bb_getsockname.o
+(libbb/lib.a)bb_pwd.o
+(libbb/lib.a)bb_strtonum.o
+(libbb/lib.a)capability.o
+(libbb/lib.a)change_identity.o
+(libbb/lib.a)chomp.o
+(libbb/lib.a)common_bufsiz.o
+(libbb/lib.a)concat_path_file.o
+(libbb/lib.a)concat_subpath_file.o
+(libbb/lib.a)copy_file.o
+(libbb/lib.a)copyfd.o
+(libbb/lib.a)correct_password.o
+(libbb/lib.a)crc32.o
+(libbb/lib.a)dump.o
+(libbb/lib.a)duration.o
+(libbb/lib.a)endofname.o
+(libbb/lib.a)executable.o
+(libbb/lib.a)fclose_nonstdin.o
+(libbb/lib.a)fflush_stdout_and_exit.o
+(libbb/lib.a)find_mount_point.o
+(libbb/lib.a)find_pid_by_name.o
+(libbb/lib.a)get_console.o
+(libbb/lib.a)get_cpu_count.o
+(libbb/lib.a)get_line_from_file.o
+(libbb/lib.a)get_shell_name.o
+(libbb/lib.a)getopt32.o
+(libbb/lib.a)getopt_allopts.o
+(libbb/lib.a)getpty.o
+(libbb/lib.a)hash_md5_sha.o
+(libbb/lib.a)hash_md5_sha256_x86-64_shaNI.o
+(libbb/lib.a)hash_md5_sha_x86-64_shaNI.o
+(libbb/lib.a)human_readable.o
+(libbb/lib.a)inet_cksum.o
+(libbb/lib.a)inode_hash.o
+(libbb/lib.a)isdirectory.o
+(libbb/lib.a)isqrt.o
+(libbb/lib.a)iterate_on_dir.o
+(libbb/lib.a)lineedit.o
+(libbb/lib.a)lineedit_ptr_hack.o
+(libbb/lib.a)llist.o
+(libbb/lib.a)login.o
+(libbb/lib.a)make_directory.o
+(libbb/lib.a)makedev.o
+(libbb/lib.a)mode_string.o
+(libbb/lib.a)nuke_str.o
+(libbb/lib.a)obscure.o
+(libbb/lib.a)parse_config.o
+(libbb/lib.a)parse_mode.o
+(libbb/lib.a)percent_decode.o
+(libbb/lib.a)perror_msg.o
+(libbb/lib.a)perror_nomsg_and_die.o
+(libbb/lib.a)print_flags.o
+(libbb/lib.a)print_numbered_lines.o
+(libbb/lib.a)printable.o
+(libbb/lib.a)printable_string.o
+(libbb/lib.a)process_escape_sequence.o
+(libbb/lib.a)procps.o
+(libbb/lib.a)progress.o
+(libbb/lib.a)pw_encrypt.o
+(libbb/lib.a)read.o
+(libbb/lib.a)read_key.o
+(libbb/lib.a)read_printf.o
+(libbb/lib.a)recursive_action.o
+(libbb/lib.a)remove_file.o
+(libbb/lib.a)replace.o
+(libbb/lib.a)run_shell.o
+(libbb/lib.a)safe_gethostname.o
+(libbb/lib.a)safe_poll.o
+(libbb/lib.a)safe_strncpy.o
+(libbb/lib.a)securetty.o
+(libbb/lib.a)setup_environment.o
+(libbb/lib.a)signals.o
+(libbb/lib.a)single_argv.o
+(libbb/lib.a)skip_whitespace.o
+(libbb/lib.a)speed_table.o
+(libbb/lib.a)str_tolower.o
+(libbb/lib.a)sysconf.o
+(libbb/lib.a)time.o
+(libbb/lib.a)trim.o
+(libbb/lib.a)u_signal_names.o
+(libbb/lib.a)udp_io.o
+(libbb/lib.a)unicode.o
+(libbb/lib.a)update_passwd.o
+(libbb/lib.a)utmp.o
+(libbb/lib.a)uuencode.o
+(libbb/lib.a)verror_msg.o
+(libbb/lib.a)vfork_daemon_rexec.o
+(libbb/lib.a)warn_ignoring_args.o
+(libbb/lib.a)wfopen.o
+(libbb/lib.a)wfopen_input.o
+(libbb/lib.a)xatonum.o
+(libbb/lib.a)xconnect.o
+(libbb/lib.a)xfuncs_printf.o
+(libbb/lib.a)xgetcwd.o
+(libbb/lib.a)xreadlink.o
+(libbb/lib.a)xrealloc_vector.o
+(libbb/lib.a)xregcomp.o
+(libbb/lib.a)bb_qsort.o
+(libbb/lib.a)perror_nomsg.o
+libpwdgrp/lib.a
+(libpwdgrp/lib.a)pwd_grp.o
+(libpwdgrp/lib.a)uidgid_get.o
+loginutils/lib.a
+mailutils/lib.a
+miscutils/lib.a
+modutils/lib.a
+networking/lib.a
+networking/libiproute/lib.a
+networking/udhcp/lib.a
+printutils/lib.a
+procps/lib.a
+runit/lib.a
+selinux/lib.a
+shell/lib.a
+sysklogd/lib.a
+util-linux/lib.a
+util-linux/volume_id/lib.a
+archival/built-in.o
+archival/libarchive/built-in.o
+console-tools/built-in.o
+coreutils/built-in.o
+coreutils/libcoreutils/built-in.o
+debianutils/built-in.o
+klibc-utils/built-in.o
+e2fsprogs/built-in.o
+editors/built-in.o
+findutils/built-in.o
+init/built-in.o
+libbb/built-in.o
+libpwdgrp/built-in.o
+loginutils/built-in.o
+mailutils/built-in.o
+miscutils/built-in.o
+modutils/built-in.o
+networking/built-in.o
+networking/libiproute/built-in.o
+networking/udhcp/built-in.o
+printutils/built-in.o
+procps/built-in.o
+runit/built-in.o
+selinux/built-in.o
+shell/built-in.o
+sysklogd/built-in.o
+util-linux/built-in.o
+util-linux/volume_id/built-in.o
+archival/lib.a
+archival/libarchive/lib.a
+console-tools/lib.a
+coreutils/lib.a
+coreutils/libcoreutils/lib.a
+debianutils/lib.a
+klibc-utils/lib.a
+e2fsprogs/lib.a
+editors/lib.a
+findutils/lib.a
+init/lib.a
+libbb/lib.a
+libpwdgrp/lib.a
+loginutils/lib.a
+mailutils/lib.a
+miscutils/lib.a
+modutils/lib.a
+networking/lib.a
+networking/libiproute/lib.a
+networking/udhcp/lib.a
+printutils/lib.a
+procps/lib.a
+runit/lib.a
+selinux/lib.a
+shell/lib.a
+sysklogd/lib.a
+util-linux/lib.a
+util-linux/volume_id/lib.a
+archival/built-in.o
+archival/libarchive/built-in.o
+console-tools/built-in.o
+coreutils/built-in.o
+coreutils/libcoreutils/built-in.o
+debianutils/built-in.o
+klibc-utils/built-in.o
+e2fsprogs/built-in.o
+editors/built-in.o
+findutils/built-in.o
+init/built-in.o
+libbb/built-in.o
+libpwdgrp/built-in.o
+loginutils/built-in.o
+mailutils/built-in.o
+miscutils/built-in.o
+modutils/built-in.o
+networking/built-in.o
+networking/libiproute/built-in.o
+networking/udhcp/built-in.o
+printutils/built-in.o
+procps/built-in.o
+runit/built-in.o
+selinux/built-in.o
+shell/built-in.o
+sysklogd/built-in.o
+util-linux/built-in.o
+util-linux/volume_id/built-in.o
+succès de la tentative d'ouverture de /usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a
+/usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a
+succès de la tentative d'ouverture de /usr/lib/gcc/x86_64-linux-gnu/13/libgcc_eh.a
+/usr/lib/gcc/x86_64-linux-gnu/13/libgcc_eh.a
+échec de la tentative d'ouverture de /usr/lib/gcc/x86_64-linux-gnu/13/libc.a
+succès de la tentative d'ouverture de /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a
+/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)libc-start.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)check_fds.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)libc-tls.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)errno.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)errno-loc.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)__libc_assert_fail.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)setjmp.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)sigjmp.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)bsd-_setjmp.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)signal.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)raise.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)killpg.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)sigaction.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)libc_sigaction.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)sigprocmask.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)kill.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)sigsuspend.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)sigempty.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)sigfillset.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)sigaddset.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)sigdelset.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)sigismem.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)sigisempty.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)allocrtsig.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)atof.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)atoi.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)bsearch.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)canonicalize.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)cxa_atexit.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)div.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)exit.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getenv.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)msort.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)putenv.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)qsort.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)rand.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)random.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)random_r.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)setenv.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strtod.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strtod_l.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strtod_nan.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strtol.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strtol_l.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strtoul.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strtoul_l.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)system.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)add_n.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)cmp.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)lshift.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)mul.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)mul_1.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)mul_n.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)rshift.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)sub_n.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)submul_1.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)mpn2dbl.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)grouping.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)tens_in_limb.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)fpioconst.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)_itoa.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getline.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)isoc23_fscanf.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)isoc23_sscanf.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)itoa-digits.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)itoa-udigits.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)rename.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)vfscanf-internal.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)iofclose.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)iofdopen.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)iofflush.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)iofopen.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)iofputs.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)iofread.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)iofwrite.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)iogetdelim.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)ioputs.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)iosetvbuf.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)putchar_u.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)clearerr.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)fileno.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)fputc.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)rewind.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)setbuf.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)fseeko.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)freopen64.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)libc_fatal.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)vtables.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)ferror_u.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getc_u.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getchar_u.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)putc_u.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)iofgets_u.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)iofputs_u.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)fileops.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)genops.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)stdfiles.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)stdio.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strops.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)alloca_cutoff.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)cancellation.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)libc-cleanup.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)lowlevellock.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)nptl_deallocate_tsd.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)nptl_nthreads.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)pthread_keys.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)pthread_kill.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)pthread_self.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)pthread_setcancelstate.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)pthread_sigmask.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)malloc.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)scratch_buffer_grow.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)scratch_buffer_grow_preserve.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)scratch_buffer_set_array_size.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memchr.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memcmp.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memcpy.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memmove.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)mempcpy.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memrchr.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memset.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)stpcpy.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)stpncpy.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcasecmp.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcasestr.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcat.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strchr.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strchrnul.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcmp.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcpy.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcspn.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strdup.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strerror.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strerror_l.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strlen.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strncase.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strncase_l.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strncmp.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strncpy.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strndup.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strnlen.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strpbrk.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strrchr.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strsep.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strsignal.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strspn.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strstr.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strtok_r.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strverscmp.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memchr-avx2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memchr-avx2-rtm.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memchr-evex.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memchr-evex-rtm.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memchr-sse2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memcmp-avx2-movbe.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memcmp-avx2-movbe-rtm.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memcmp-evex-movbe.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memcmp-sse2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memmove-avx-unaligned-erms.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memmove-avx-unaligned-erms-rtm.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memmove-avx512-no-vzeroupper.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memmove-avx512-unaligned-erms.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memmove-erms.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memmove-evex-unaligned-erms.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memmove-sse2-unaligned-erms.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memmove-ssse3.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memrchr-avx2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memrchr-avx2-rtm.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memrchr-evex.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memrchr-sse2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memset-avx2-unaligned-erms.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memset-avx2-unaligned-erms-rtm.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memset-avx512-no-vzeroupper.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memset-avx512-unaligned-erms.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memset-erms.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memset-evex-unaligned-erms.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memset-sse2-unaligned-erms.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)stpcpy-avx2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)stpcpy-avx2-rtm.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)stpcpy-evex.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)stpcpy-sse2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)stpcpy-sse2-unaligned.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)stpncpy-avx2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)stpncpy-avx2-rtm.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)stpncpy-evex.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)stpncpy-sse2-unaligned.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcasecmp_l-avx2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcasecmp_l-avx2-rtm.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcasecmp_l-evex.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcasecmp_l-sse2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcasecmp_l-sse4_2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcat-avx2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcat-avx2-rtm.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcat-evex.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcat-sse2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcat-sse2-unaligned.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strchr-avx2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strchr-avx2-rtm.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strchr-evex.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strchr-sse2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strchr-sse2-no-bsf.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strchrnul-avx2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strchrnul-avx2-rtm.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strchrnul-evex.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strchrnul-sse2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcmp-avx2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcmp-avx2-rtm.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcmp-evex.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcmp-sse2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcmp-sse2-unaligned.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcmp-sse4_2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcpy-avx2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcpy-avx2-rtm.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcpy-evex.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcpy-sse2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcpy-sse2-unaligned.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcspn-sse4.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strlen-avx2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strlen-avx2-rtm.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strlen-evex.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strlen-sse2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strncase_l-avx2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strncase_l-avx2-rtm.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strncase_l-evex.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strncase_l-sse2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strncase_l-sse4_2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strncmp-avx2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strncmp-avx2-rtm.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strncmp-evex.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strncmp-sse2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strncmp-sse4_2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strncpy-avx2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strncpy-avx2-rtm.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strncpy-evex.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strncpy-sse2-unaligned.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strnlen-avx2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strnlen-avx2-rtm.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strnlen-evex.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strnlen-sse2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strpbrk-sse4.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strrchr-avx2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strrchr-avx2-rtm.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strrchr-evex.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strrchr-sse2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strspn-sse4.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strstr-avx512.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strstr-sse2-unaligned.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)varshift.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcasecmp_l-nonascii.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcspn-generic.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strncase_l-nonascii.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strpbrk-generic.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strspn-generic.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)mbrlen.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)mbrtowc.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wcrtomb.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wcsmbsload.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)ctime.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)gmtime.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)localtime.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)mktime.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)time.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)gettimeofday.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)settimeofday.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)settimezone.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)tzset.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)tzfile.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)timegm.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strptime.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strptime_l.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strftime.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strftime_l.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)clock_gettime.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)clock_settime.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)era.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)alt_digit.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)opendir.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)closedir.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)readdir64.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)scandir64.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)alphasort64.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)scandir64-tail.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)setgroups.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)_exit.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)alarm.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)execl.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)execlp.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)execv.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)execve.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)execvp.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)execvpe.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)fnmatch.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)fork.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getaddrinfo.o
+/usr/bin/ld: libbb/lib.a(xconnect.o) : dans la fonction « str2sockaddr » :
+xconnect.c:(.text.str2sockaddr+0x14a): avertissement : Using 'getaddrinfo' in statically linked applications requires at runtime the shared libraries from the glibc version used for linking
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getegid.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)geteuid.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getgid.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getgroups.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getopt.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getopt1.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getpgrp.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getpid.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getppid.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getresgid.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getresuid.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getsid.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getuid.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)glob.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)globfree.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)nanosleep.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)pause.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)regex.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)register-atfork.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)sched_yield.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)setgid.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)setpgid.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)setpgrp.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)setsid.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)setuid.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)sleep.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)spawn.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)spawnattr_destroy.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)spawnattr_init.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)spawnattr_setdefault.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)spawnattr_setflags.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)spawnattr_setsigmask.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)spawni.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)sysconf.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)times.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)uname.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)vfork.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wait.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wait3.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wait4.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)waitpid.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)environ.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)access.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)chdir.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)chmod.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)chown.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)close.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dup.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dup2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dup3.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)faccessat.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)fchdir.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)fchmod.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)fchown.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)fcntl64.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)flock.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)fstat64.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)fstatat64.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getcwd.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)isatty.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)lchown.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)link.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)lseek64.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)lstat64.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)mkdir.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)mkfifo.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)mknod.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)mknodat.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)open64.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)openat64.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)pipe.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)poll.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)read.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)readlink.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)rmdir.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)sendfile64.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)stat64.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)statfs64.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)statvfs64.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)symlink.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)ttyname_r.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)umask.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)unlink.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)write.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)close_nocancel.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)fcntl_nocancel.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)internal_statvfs.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)open64_nocancel.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)openat64_nocancel.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)read_nocancel.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)write_nocancel.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)cfsetspeed.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)tcsetattr.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)tcgetattr.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)tcgetpgrp.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)tcsetpgrp.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)tcdrain.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)tcflush.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)cfmakeraw.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)tcgetsid.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getrlimit64.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)setrlimit64.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getpriority.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)setpriority.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)nice.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)brk.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)chroot.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dirname.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)fd_to_filename.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)fdatasync.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)fsync.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)ftruncate64.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getclktck.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getdtsz.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)gethostid.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)gethostname.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getpagesize.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getsysstats.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getusershell.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)ioctl.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)madvise.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)makedev.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)mkdtemp.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)mkstemp.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)mktemp.o
+/usr/bin/ld: coreutils/lib.a(mktemp.o) : dans la fonction « mktemp_main » :
+mktemp.c:(.text.mktemp_main+0xa4): avertissement : the use of `mktemp' is dangerous, better use `mkstemp' or `mkdtemp'
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)mmap64.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)mntent.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)mntent_r.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)mprotect.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)munmap.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)sbrk.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)setegid.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)seteuid.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)single_threaded.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)sync.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)syncfs.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)syslog.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)tsearch.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)usleep.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)utimes.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)init-misc.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)clone-internal.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)clone3.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)closefrom_fallback.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)mremap.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)personality.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)prctl.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)capget.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)capset.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)klogctl.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)mount.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)sysinfo.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)malloc-hugepages.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)accept.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)bind.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)connect.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getpeername.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getsockname.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getsockopt.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)listen.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)recv.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)recvmsg.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)send.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)sendmsg.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)sendto.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)setsockopt.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)shutdown.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)socket.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)socketpair.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)cmsg_nxthdr.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wcfuncs.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wctype.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)iswctype.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wctrans.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)towctrans.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)asprintf_chk.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)chk_fail.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dprintf_chk.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)fgets_u_chk.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)fortify_fail.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)fprintf_chk.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)longjmp_chk.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)poll_chk.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)printf_chk.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)snprintf_chk.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)sprintf_chk.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)stack_chk_fail.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcat_chk.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcpy_chk.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)vasprintf_chk.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)vfprintf_chk.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)vprintf_chk.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)vsnprintf_chk.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memcpy_chk-nonshared.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memmove_chk-nonshared.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)mempcpy_chk-nonshared.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memset_chk-nonshared.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)inet_ntoa.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)herrno.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)gethstbynm2_r.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)gethstbynm_r.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getsrvbynm.o
+/usr/bin/ld: libbb/lib.a(xconnect.o) : dans la fonction « bb_lookup_port » :
+xconnect.c:(.text.bb_lookup_port+0x37): avertissement : Using 'getservbyname' in statically linked applications requires at runtime the shared libraries from the glibc version used for linking
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getsrvbynm_r.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getsrvbypt.o
+/usr/bin/ld: networking/lib.a(pscan.o) : dans la fonction « pscan_main » :
+pscan.c:(.text.pscan_main+0x22d): avertissement : Using 'getservbyport' in statically linked applications requires at runtime the shared libraries from the glibc version used for linking
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getsrvbypt_r.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)in6_addr.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getnameinfo.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)if_index.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)ifaddrs.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)inet6_scopeid_pton.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)idna.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)idna_name_classify.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)check_pf.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)check_native.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)netlink_assert_response.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)inet_addr.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)inet_ntop.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)inet_pton.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)res_hconf.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)resolv_context.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)nsswitch.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)digits_dots.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)service-lookup.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)hosts-lookup.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)nss_module.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)nss_database.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)nss_files_functions.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)files-proto.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)files-service.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)files-hosts.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)files-network.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)files-grp.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)files-pwd.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)files-ethers.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)files-spwd.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)files-netgrp.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)files-alias.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)files-sgrp.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)files-rpc.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)files-initgroups.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)nscd_gethst_r.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)nscd_getai.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)nscd_getserv_r.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)nscd_helper.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getlogin_r.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getutent_r.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)utmp_file.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)utmpname.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)grantpt.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)unlockpt.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)ptsname.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)setutxent.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getutxent.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)endutxent.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)pututxline.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)updwtmpx.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-debug.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-debug-symbols.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-tls.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-tls_init_tp.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-tunables.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-early_allocate.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-libc.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-profstub.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-support.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-sysdep.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)enbl-secure.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)libc_early_init.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)init-first.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)gconv_db.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)gconv_conf.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)gconv_builtin.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)gconv_simple.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)gconv_trans.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)gconv_cache.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)gconv_dl.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)setlocale.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)findlocale.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)loadlocale.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)loadarchive.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)uselocale.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)lc-ctype.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)lc-collate.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)C-ctype.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)C-time.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)SYS_libc.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)C_name.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)xlocale.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)global-locale.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)coll-lookup.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)ctype-info.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dcgettext.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dcigettext.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)finddomain.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)loadmsgcat.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)localealias.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)l10nflist.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)explodename.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)plural.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)plural-exp.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)hash-string.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)jmp-unwind.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)abort.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)secure-getenv.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strtof.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strtof_l.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strtof_nan.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strtold.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strtold_l.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strtold_nan.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)addmul_1.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)mpn2flt.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)mpn2ldbl.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strtof128.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strtof128_l.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strtof128_nan.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)mpn2float128.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dprintf.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)funlockfile.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)snprintf.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)tempname.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)vfprintf-internal.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)errlist.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)errlist-data.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)errname.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)fxprintf.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)printf-parsemb.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)filedoalloc.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)iofgetpos.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)iofsetpos.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)iogetline.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)ioseekoff.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)ioseekpos.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)iosetbuffer.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)ioungetc.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)iovsprintf.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wgenops.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wfileops.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)iofwide.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)fseek.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)vasprintf.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)iovdprintf.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)vsnprintf.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)ftello.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)iofread_u.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)elision-conf.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)nptl_setxid.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)pthread_cleanup_upto.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)pthread_mutex_conf.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)pthread_mutex_lock.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)pthread_mutex_unlock.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)pthread_once.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)pthread_rwlock_init.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)pthread_rwlock_rdlock.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)pthread_rwlock_unlock.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)pthread_rwlock_wrlock.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)tpp.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)vars.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dynarray_at_failure.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dynarray_emplace_enlarge.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dynarray_resize.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)alloc_buffer_alloc_array.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)alloc_buffer_copy_string.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)alloc_buffer_create_failure.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)_strerror.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)argz-addsep.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)argz-ctsep.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)memmem.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)sigdescr_np.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcasecmp_l.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcoll.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)strcoll_l.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)cacheinfo.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)btowc.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)mbsrtowcs.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)mbsrtowcs_l.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wcscat.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wcschr.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wcslen.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wcsrtombs.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wmemchr.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wmemcmp.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wmemcpy.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wmemmove.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wmempcpy.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wcscat-avx2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wcscat-evex.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wcscat-generic.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wcschr-avx2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wcschr-avx2-rtm.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wcschr-evex.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wcschr-sse2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wcslen-avx2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wcslen-avx2-rtm.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wcslen-evex.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wcslen-sse2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wcslen-sse4_1.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wmemchr-avx2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wmemchr-avx2-rtm.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wmemchr-evex.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wmemchr-evex-rtm.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wmemchr-sse2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wmemcmp-avx2-movbe.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wmemcmp-avx2-movbe-rtm.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wmemcmp-evex-movbe.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wmemcmp-sse2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)offtime.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)asctime.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)clock_nanosleep.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)lc-time-cleanup.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)rewinddir.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getdents64.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dirfd.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)fdopendir.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)scandir-cancel.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)fgetgrent_r.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getpwnam_r.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getpwuid_r.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)fgetpwent_r.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)_Fork.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)get_child_max.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getpgid.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)group_member.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)sched_cpucount.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)sched_getp.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)sched_gets.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)sched_primax.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)sched_primin.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)sched_setp.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)sched_sets.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)file_change_detection.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)utimensat.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)pread64_nocancel.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)speed.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)allocate_once.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)readv.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)clone.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)opensock.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)sgetspent_r.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)sgetsgent_r.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)____longjmp_chk.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)readonly-area.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)stpcpy_chk.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)inet_net.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)gethstbyad_r.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)ifreq.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)nss_dns_functions.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)res-close.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)res_init.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)res_libc.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)res_randomid.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)resolv_conf.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)pwd-lookup.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)nss_hash.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)nss_files_fopen.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)nss_readline.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)nss_parse_line_result.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)nss_fgetent_r.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)nss_action_parse.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)nss_files_data.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)nscd_getpw_r.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getutent.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)updwtmp.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-catch.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-close.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-exception.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-find_object.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-init.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-load.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-lookup.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-minimal-malloc.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-misc.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-object.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-open.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-origin.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-printf.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-profile.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-reloc.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-scope.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-setup_hash.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-thread_gscope_wait.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-trampoline.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-version.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-cache.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)tlsdesc.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-tlsdesc.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-cet.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-addr-obj.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)rtld_static_init.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)gconv_open.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)gconv.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)gconv_close.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)gconv_charset.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)lc-numeric.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)C-messages.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)C-monetary.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)C-numeric.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)C-paper.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)C-name.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)C-address.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)C-telephone.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)C-measurement.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)C-identification.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)C-collate.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)localename.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)__longjmp.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)getrandom.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)grouping_iterator.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)printf_buffer_done.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)printf_buffer_pad_1.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)printf_buffer_putc_1.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)printf_buffer_puts_1.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)printf_buffer_to_file.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)printf_buffer_write.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)printf_fp.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)printf_fphex.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)printf_function_invoke.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)reg-modifier.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)reg-printf.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)reg-type.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)translated_number_width.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)vfwprintf-internal.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wprintf_buffer_done.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wprintf_buffer_pad_1.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wprintf_buffer_putc_1.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wprintf_buffer_to_file.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wprintf_buffer_write.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wprintf_function_invoke.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)printf-parsewc.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)siglist.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dladdr.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dladdr1.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dlclose.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dlerror.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dlinfo.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dlmopen.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dlopen.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dlsym.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dlvsym.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)libc_dlerror_result.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)cleanup_compat.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)elision-lock.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)elision-unlock.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)futex-internal.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)nptl-stack.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)alloc_buffer_allocate.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)alloc_buffer_copy_bytes.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wcschrnul.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wcscpy.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wcsnlen.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wmemset.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wcscpy-avx2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wcscpy-evex.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wcscpy-generic.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wcscpy-ssse3.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wcsnlen-avx2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wcsnlen-avx2-rtm.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wcsnlen-evex.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wcsnlen-sse4_1.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wcsnlen-generic.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)profil.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)prof-freq.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)inet_mkadr.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dns-canon.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dns-host.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dns-network.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)ns_name_ntop.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)ns_name_unpack.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)ns_rr_cursor_init.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)ns_rr_cursor_next.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)ns_samebinaryname.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)res-name-checking.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)res_context_hostalias.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)res_query.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)res_send.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)nss_action.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-call-libc-early-init.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-call_fini.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-deps.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-execstack.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-lookup-direct.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-runtime.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-sort-maps.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-addr.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dl-sym.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)divrem.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dbl2mpn.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)ldbl2mpn.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)float1282mpn.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)asprintf.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)itowa-digits.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)printf_buffer_as_file.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)printf_buffer_flush.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wprintf_buffer_as_file.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)wprintf_buffer_flush.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)setitimer.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)writev.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)recvfrom.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)sendmmsg.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)read_chk.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dn_expand.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)dn_skipname.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)ns_name_length_uncompressed.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)ns_name_pton.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)ns_name_skip.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)ns_name_uncompress.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)ns_samename.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)res-noaaaa.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)res_enable_icmp.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)res_get_nsaddr.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)res_mkquery.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)res_queriesmatch.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)ns_makecanon.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)ns_name_compress.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)ns_name_pack.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a)res_nameinquery.o
+/usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a
+(/usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a)addtf3.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a)multf3.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a)unordtf2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a)letf2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a)sfp-exceptions.o
+/usr/lib/gcc/x86_64-linux-gnu/13/libgcc_eh.a
+(/usr/lib/gcc/x86_64-linux-gnu/13/libgcc_eh.a)unwind-dw2.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/libgcc_eh.a)unwind-dw2-fde-dip.o
+(/usr/lib/gcc/x86_64-linux-gnu/13/libgcc_eh.a)unwind-c.o
+/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a
+/usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a
+/usr/lib/gcc/x86_64-linux-gnu/13/libgcc_eh.a
+/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.a
+succès de la tentative d'ouverture de /usr/lib/gcc/x86_64-linux-gnu/13/crtend.o
+/usr/lib/gcc/x86_64-linux-gnu/13/crtend.o
+succès de la tentative d'ouverture de /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o
+/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o

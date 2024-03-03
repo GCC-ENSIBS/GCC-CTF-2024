@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" class="uk-background-custom">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.png')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/uikit.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+    <script src="{{ url_for('static', filename='js/uikit.min.js') }}" nonce="{{nonce}}"></script>
+    <script src="{{ url_for('static', filename='js/uikit-icons.min.js') }}" nonce="{{nonce}}"></script>
+    <title>Compass - Login</title>
+</head>
+
+<body>
+    <div class="uk-height-auto uk-position-center uk-background-muted">
+        <div class="uk-margin-auto uk-card uk-card-default uk-card-body form-container uk-animation-fade uk-width-large">
+            <div class="uk-inline uk-height-auto uk-flex uk-flex-center uk-flex-middle uk-margin-bottom">
+                <img id="logo" src="{{ url_for('static', filename='img/logo.png') }}">
+            </div>
+            <div class="uk-alert-primary" uk-alert>
+                <a href class="uk-alert-close" uk-close></a>
+                <p class="uk-text-center uk-text-emphasis uk-margin-right uk-margin-left">Quick, quick, they're trying to stop us from getting the compass! </p>
+            </div>
+            <div id="responseToCall"></div>
+            <div id="login-form">
+                <form method="POST" action="{{ url_for('index') }}" enctype="multipart/form-data">
+                    <input id="username" class="uk-input uk-margin-bottom" type="text" name="username" placeholder="Username" required>
+                    <div>
+                        <input id="password" class="uk-input uk-margin-bottom" type="password" name="password" placeholder="Password" required>
+                    </div>
+                    <button class="uk-button" value="submit">Login</button>
+                </form>
+            </div>
+            <p class="uk-text-center uk-margin-top">Need sources ? Find them <a href="{{ url_for('sources') }}" target="_blank" class="uk-link-muted">here</a></p>
+            <p class="uk-text-center uk-margin-small-top uk-margin-bottom-small">🧭</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/login.js') }}" nonce="{{nonce}}"></script>
+</body>
+</html>

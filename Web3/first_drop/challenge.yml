@@ -1,0 +1,40 @@
+name: First drop
+author: Greed
+# Crypto ; Web3 ; Web ; Reverse ; Forensic ; Misc ; OSINT ; Pwn
+category: Web3
+description: |-
+  After many months of preparation, Beyond, the greatest art company has finally launched their NFT.
+
+  People can buy them for 1 ETH and even get a refund if they are not satisfied.
+
+  For their first drop, they are collaborating with an independant artist called Above who launched a special collection just for the event.
+
+  Only the first 5 owners of a Beyond NFT are eligible to get their hands on it.
+
+  Author: [Greed](https://twitter.com/0xGreed_)
+
+# Do not touch that, dynamic scoring is used.
+value: 500
+type: dynamic
+extra:
+  initial: 500
+  decay: 55
+  minimum: 100
+
+flags:
+- GCC{Ch3cking_addreS$_c0d3_length_!S_Fl@w3d}
+
+# Tags are : 1. Difficulty (Intro, Easy, Medium, Hard, Insane) ; 2. General theme (no spoil) ; 3. Author
+tags:
+- Medium
+- NFT
+- Greed
+
+files:
+- dist/gcc_first_drop.zip
+
+connection_info: https://deploy.gcc-ctf.com/
+# More info : https://github.com/CTFd/ctfcli/blob/master/ctfcli/spec/challenge-example.yml
+
+# Do not touch, ctf-cli related
+version: '0.1'

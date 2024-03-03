@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  elliptic:
+    build: Elliptic/infra
+    ports:
+      - "4000:1337"
+    deploy:
+      resources:
+        limits:
+          cpus: "4"
+          memory: 4G
+    restart: always
+  super-aes:
+    build: superAES/infra
+    ports:
+      - "4001:1337"
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 2G
+    privileged: true
+    restart: always
+  trust_issues:
+    build: trust_issues/infra
+    ports:
+      - "4002:8080"
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: 1G
+    restart: always
+
+      

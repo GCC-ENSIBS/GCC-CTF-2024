@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" class="uk-background-custom">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/uikit.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+    <script src="{{ url_for('static', filename='js/uikit.min.js') }}" nonce="{{nonce}}"></script>
+    <script src="{{ url_for('static', filename='js/uikit-icons.min.js') }}" nonce="{{nonce}}"></script>
+    <title>FreeChat - App</title>
+</head>
+
+<body>
+    <div class="uk-height-auto uk-position-center uk-background-muted">
+        <div class="uk-margin-auto uk-card uk-card-default uk-card-body form-container uk-animation-fade uk-width-large" style="width:70rem;"> 
+            <div class="uk-inline uk-height-auto uk-flex uk-flex-center uk-flex-middle uk-margin-bottom">
+                <img id="logo" src="{{ url_for('static', filename='img/logo.png') }}" style="max-width: 15%;">
+            </div>
+            <div id="chat">
+                <div id="chat-container" class="uk-card uk-card-default uk-card-body uk-height-large uk-border-rounded uk-panel-scrollable" style="resize: none; height:25rem;">
+                    {% if chats|length > 0 %}
+                        {% for message in chats %}
+                            {{message['author']}} | {{message['message']}}<br>
+                        {% endfor %}
+                    {% else %}
+                        <p>No messages yet !</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div id="send-chat">
+                <form action="{{url_for('chat')}}" method="POST">
+                    <div class="uk-panel uk-flex uk-flex-center uk-flex-middle">
+                        <input id="chat-input" class="uk-input" type="text" name="message" placeholder="Type your message here" required>
+                        <button class="uk-button" value="submit">Send</button>
+                    </div>
+                </form>
+            </div>
+            <div class="uk-text-center">
+                <hr>
+                <a href="{{url_for('logout')}}" class="uk-icon-link uk-margin-small-right" uk-icon="sign-out"></a>|<a href="{{url_for('settings')}}" class="uk-icon-link uk-margin-small-left" uk-icon="cog"></a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" class="uk-background-custom">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/uikit.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+    <script src="{{ url_for('static', filename='js/uikit.min.js') }}" nonce="{{nonce}}"></script>
+    <script src="{{ url_for('static', filename='js/uikit-icons.min.js') }}" nonce="{{nonce}}"></script>
+    <title>GCC - Login</title>
+</head>
+
+<body>
+    <div class="uk-height-auto uk-position-center uk-background-muted">
+        <div class="uk-margin-auto uk-card uk-card-default uk-card-body form-container uk-animation-fade uk-width-large">
+            <div class="uk-inline uk-height-auto uk-flex uk-flex-center uk-flex-middle uk-margin-bottom">
+                <img id="logo" src="{{ url_for('static', filename='img/gcc.png') }}">
+            </div>
+            <div class="uk-alert-primary" uk-alert>
+                <a href class="uk-alert-close" uk-close></a>
+                <p class="uk-text-center uk-text-emphasis uk-margin-right uk-margin-left">Dear users, registration for our services is now deactivated until further notice. We apologise for any inconvenience caused. </p>
+            </div>
+            <div id="responseToCall"></div>
+            <div id="login-form">
+                <form method="POST" action="{{ url_for('index') }}" enctype="multipart/form-data">
+                    <input id="username" class="uk-input uk-margin-bottom" type="text" name="username" placeholder="Username" required>
+                    <div>
+                        <input id="password" class="uk-input uk-margin-bottom" type="password" name="password" placeholder="Password" required>
+                        <a id="switchReset" class="uk-text-right uk-link-muted"><p>Forgot password ?</p></a>
+                    </div>
+                    <button class="uk-button" value="submit">Login</button>
+                </form>
+            </div>
+            <div id="reset-form" hidden>
+                <form method="POST" action="{{ url_for('index') }}" enctype="multipart/form-data">
+                    <input id="username-pw-reset" class="uk-input uk-margin-bottom" type="text" name="username" placeholder="username" required>
+                    <button class="uk-button" value="submit">Reset Password</button>
+                </form>
+                <p class="uk-text-center">Missclicked ? <a id="switchLogin">Go back !</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/menu_switcher.js') }}" nonce="{{nonce}}"></script>
+    <script src="{{ url_for('static', filename='js/login.js') }}" nonce="{{nonce}}"></script>
+    <script src="{{ url_for('static', filename='js/reset.js') }}" nonce="{{nonce}}"></script>
+
+    <!-- 
+                                Note for admins : 
+    For the sake of security, remove the bloody swagger UI from the production build.
+    -->
+</body>
+</html>

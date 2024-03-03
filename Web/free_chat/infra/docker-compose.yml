@@ -1,0 +1,18 @@
+version: '2.4'
+
+services:
+  freechat:
+    image: freechat
+    container_name: freechat
+    build:
+      context: .
+      dockerfile: Dockerfile.freechat
+    ports:
+      - "8080:5000"
+
+  freechat.devpanel:
+    image: freechat_devpanel
+    container_name: freechat_devpanel
+    build:
+      context: .
+      dockerfile: Dockerfile.devpanel

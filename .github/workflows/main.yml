@@ -1,0 +1,20 @@
+on:
+  push:
+    branches:
+      - '*'
+
+
+jobs:
+  challenges_jobs:
+    runs-on: ubuntu-latest
+    env:
+      CTFD_URL: ${{ secrets.CTFD_URL }}
+      CTFD_TOKEN: ${{ secrets.CTFD_TOKEN }}
+    steps:
+      - name: Checkout Github Directory
+        uses: actions/checkout@v4
+
+      - name: Vérification et upload des challenges
+        uses: ./.github/actions/challenge-validation
+
+

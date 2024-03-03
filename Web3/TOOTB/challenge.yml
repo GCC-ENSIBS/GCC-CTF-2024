@@ -1,0 +1,41 @@
+name: TOOTB
+author: ISO
+# Crypto ; Web3 ; Web ; Reverse ; Forensic ; Misc ; OSINT ; Pwn
+category: Web3
+description: |-
+  Your goal is to make the isSolved() function return the inverse of this question: Is the earth flat?
+
+  You might need to know 2 things to solve this challenge : 
+  1) This challenge was made by a rookie dev, and he insist to create the challenge from A to Z.
+  2) No, the earth is not flat =)
+
+  Author: ISO
+
+# Do not touch that, dynamic scoring is used.
+value: 500
+type: dynamic
+extra:
+  initial: 500
+  decay: 55
+  minimum: 100
+
+flags:
+- GCC{RPc_faC11iTATed_3fFicIeNT_C0MMuN1cA7iOn_8ETWeEn_cu83s}
+
+# Tags are : 1. Difficulty (Intro, Easy, Medium, Hard, Insane) ; 2. General theme (no spoil) ; 3. Author
+tags:
+- Medium
+- MISC SOL
+- ISO
+
+# Can and should be remove if not used
+# connection_info: nc crypto123.gcc-ensibs.fr 1337
+files:
+- dist/Challenge.sol
+- dist/Cubes.sol
+
+connection_info: https://deploy.gcc-ctf.com/
+# More info : https://github.com/CTFd/ctfcli/blob/master/ctfcli/spec/challenge-example.yml
+
+# Do not touch, ctf-cli related
+version: '0.1'

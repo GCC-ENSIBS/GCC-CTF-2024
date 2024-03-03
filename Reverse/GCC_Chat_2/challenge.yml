@@ -1,0 +1,38 @@
+name: GCC_Chat 2/2
+author: Al-oxos
+# Crypto ; Web3 ; Web ; Reverse ; Forensic ; Misc ; OSINT ; Pwn
+category: Reverse
+description: |-
+  Okey you found our shared account, but Im sure you will never find a way to send the message `Gimme that flag you silly boy!` since the button is disabled...
+  
+  **This challenge is the sequel of `GCC_Chat 1/2` and use the same application.**
+  
+  Author: Al-oxos
+
+# Do not touch that, dynamic scoring is used.
+value: 500
+type: dynamic
+extra:
+  initial: 500
+  decay: 55
+  minimum: 100
+
+flags:
+- GCC{N0w_W3_c4n_S4y_Th4t_y0u_4re_R34ct1ve!}
+
+# Tags are : 1. Difficulty (Intro, Easy, Medium, Hard, Insane) ; 2. General theme (no spoil) ; 3. Author
+tags:
+- Easy
+- React-Native
+- Al-oxos
+
+# Can and should be remove if not used
+files:
+- dist/GCC_Chat.apk
+requirements:
+- GCC_Chat 1/2
+
+# More info : https://github.com/CTFd/ctfcli/blob/master/ctfcli/spec/challenge-example.yml
+
+# Do not touch, ctf-cli related
+version: '0.1'

@@ -1,0 +1,44 @@
+name: But they so tasty ... 😔🍰
+author: Shynif
+# Crypto ; Web3 ; Web ; Reverse ; Forensic ; Misc ; OSINT ; Pwn
+category: OSINT
+description: |-
+  Our OSINT teacher, sir Staffengaouehll, joined us in class dead tired.<br>
+  Apparently he started running 👀<br>
+  Problem is, he didn't stop his bad habit of savouring **2 coconut flan slices almost everydays!**
+
+  You alarmed him but he won't listen.
+  > "It's not **that** bad ???"
+  
+  Show him why he should watchout by giving him the amount of kilo Jouls he gets everytimes he eats his 2 flan slices!
+
+  > Flag format is ``GCC{<kJ here>_m1ghT_b3_t0o_MucH}`` with the kilo Jouls rounded to the upper value. Exemple 456.7 kJ would give this flag ``GCC{457_m1ghT_b3_t0o_MucH}``
+
+  Author: [Shynif](https://antoine.rocks)
+
+# Do not touch that, dynamic scoring is used.
+value: 500
+type: dynamic
+extra:
+  initial: 500
+  decay: 55
+  minimum: 100
+
+flags:
+- GCC{2967_m1ghT_b3_t0o_MucH}
+
+# Tags are : 1. Difficulty (Intro, Easy, Medium, Hard, Insane) ; 2. General theme (no spoil) ; 3. Author
+tags:
+- Medium
+- Sport
+- Shynif
+
+# Can and should be remove if not used
+hints:
+    - They do not weight 100g
+
+
+# More info : https://github.com/CTFd/ctfcli/blob/master/ctfcli/spec/challenge-example.yml
+
+# Do not touch, ctf-cli related
+version: '0.1'

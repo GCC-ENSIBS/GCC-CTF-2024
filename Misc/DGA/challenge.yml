@@ -1,0 +1,42 @@
+name: Diabolical Grumpy Analyst
+author: TheoR
+# Crypto ; Web3 ; Web ; Reverse ; Forensic ; Misc ; OSINT ; Pwn
+category: Misc
+description: |-
+  DGA (Domain Generation Algorithms) are widely used by attackers to create rendezvous points with C2 (Command & Control) servers.
+  You have access to DNS information and you want to block all this malicious domains. 
+  
+  Will you be able to detect which domains are legit and which are not?
+
+  !! Loading the data can take some time, you may have to wait 1-2 minutes before receiving the data !! 
+
+  Author: TheoR
+
+# Do not touch that, dynamic scoring is used.
+value: 500
+type: dynamic
+extra:
+  initial: 500
+  decay: 55
+  minimum: 100
+
+flags:
+- GCC{M4ch1n3_L34rn1ng_15_v3ry_g00d_4t_d3t3ct1ng_m4l1c10us_4ct1v135}
+
+# Tags are : 1. Difficulty (Intro, Easy, Medium, Hard, Insane) ; 2. General theme (no spoil) ; 3. Author
+tags:
+- Medium
+- MachineLearning
+- TheoR
+
+# Can and should be remove if not used
+connection_info: nc challenges1.gcc-ctf.com 4003
+files:
+- dist/dataset_dga.txt
+- dist/dataset_legit.txt
+- dist/challenge.py
+
+# More info : https://github.com/CTFd/ctfcli/blob/master/ctfcli/spec/challenge-example.yml
+
+# Do not touch, ctf-cli related
+version: '0.1'

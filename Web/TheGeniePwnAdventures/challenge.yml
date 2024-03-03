@@ -1,0 +1,36 @@
+name: The Genie's pwn adventures
+author: xThaz, Synacktiv
+# Crypto ; Web3 ; Web ; Reverse ; Forensic ; Misc ; OSINT ; Pwn
+category: Web
+description: |-
+  Genie asked you to exploit the new ransomware's chat platform BockLit that is being used to steal compromised company's money.
+
+  Author: [Synacktiv](https://www.synacktiv.com/), [xThaz](https://twitter.com/0xThaz)
+
+# Do not touch that, dynamic scoring is used.
+value: 500
+type: dynamic
+extra:
+  initial: 500
+  decay: 55
+  minimum: 100
+
+flags:
+- GCC{L3_w3b_c'E5t_Du_PwN_Ouuuuuuuu?_SynacktivRecrute_}
+
+# Tags are : 1. Difficulty (Intro, Easy, Medium, Hard, Insane) ; 2. General theme (no spoil) ; 3. Author
+tags:
+- Medium
+- Web
+- Synacktiv, xThaz
+
+connection_info: https://deploy.gcc-ctf.com/
+
+# Can and should be remove if not used
+files:
+- TheGeniePwnAdventures.zip
+
+# More info : https://github.com/CTFd/ctfcli/blob/master/ctfcli/spec/challenge-example.yml
+
+# Do not touch, ctf-cli related
+version: '0.1'

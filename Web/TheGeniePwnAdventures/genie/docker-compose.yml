@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+
+  genie:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - FLAG=GCC{L3_w3b_c'E5t_Du_PwN_Ouuuuuuuu?_SynacktivRecrute_}

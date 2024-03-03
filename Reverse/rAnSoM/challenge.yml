@@ -1,0 +1,41 @@
+name: rAnSoM 
+author: xanhacks 
+# Crypto ; Web3 ; Web ; Reverse ; Forensic ; Misc ; OSINT ; Pwn
+category: Reverse
+description: |-
+  Jessie recently acquired new computers and set them up with Debian, ensuring to incorporate the most current security enhancements. Nevertheless, two weeks following this setup, she discovers that her secrets file has been encrypted.
+
+  Find the content of the secrets file!
+  
+  Author: [xanhacks](https://xanhacks.xyz)
+
+# Do not touch that, dynamic scoring is used.
+value: 500
+type: dynamic
+extra:
+  initial: 500
+  decay: 55
+  minimum: 100
+
+flags:
+- {
+  type: "static",
+  content: "GCC{S1MPL3_0BFU!!}",
+  data: "case_insensitive",
+}
+
+# Tags are : 1. Difficulty (Intro, Easy, Medium, Hard, Insane) ; 2. General theme (no spoil) ; 3. Author
+tags:
+- Easy 
+- ASM x86
+- xanhacks
+
+# Can and should be remove if not used
+files:
+- dist/ransom
+- dist/secrets.txt.enc
+
+# More info : https://github.com/CTFd/ctfcli/blob/master/ctfcli/spec/challenge-example.yml
+
+# Do not touch, ctf-cli related
+version: '0.1'

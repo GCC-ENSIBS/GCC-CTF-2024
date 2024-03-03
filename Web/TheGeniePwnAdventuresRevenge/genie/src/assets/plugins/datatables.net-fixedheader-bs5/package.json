@@ -1,0 +1,51 @@
+{
+    "name": "datatables.net-fixedheader-bs5",
+    "description": "FixedHeader for DataTables with styling for [Bootstrap5](https://getbootstrap.com/)",
+    "main": "js/fixedHeader.bootstrap5.js",
+    "style": "css/fixedHeader.bootstrap5.css",
+    "types": "./types/fixedHeader.bootstrap5.d.ts",
+    "version": "3.2.2",
+    "files": [
+        "css/**/*.css",
+        "js/**/*.js",
+        "types/**/*.d.ts"
+    ],
+    "keywords": [
+        "FixedHeader",
+        "Fixed Headers",
+        "Sticky",
+        "Bootstrap",
+        "Bootstrap5",
+        "Datatables",
+        "jQuery",
+        "table",
+        "filter",
+        "sort"
+    ],
+    "dependencies": {
+        "datatables.net-fixedheader": ">=3.2.0",
+        "datatables.net-bs5": ">=1.11.3",
+        "jquery": ">=1.7"
+    },
+    "moduleType": [
+        "globals",
+        "amd",
+        "node"
+    ],
+    "ignore": [
+        "composer.json",
+        "datatables.json",
+        "package.json"
+    ],
+    "author": {
+        "name": "SpryMedia Ltd",
+        "url": "http://datatables.net"
+    },
+    "homepage": "https://datatables.net",
+    "bugs": "https://datatables.net/forums",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DataTables/Dist-DataTables-FixedHeader-Bootstrap5.git"
+    }
+}

@@ -1,0 +1,1 @@
+flag = b"GCC{pretend_its_a_good_flag_2515}"

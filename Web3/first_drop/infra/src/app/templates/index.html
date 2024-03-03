@@ -1,0 +1,88 @@
+<html>
+<head>
+    <title>GCC | First drop</title>
+    <script src="/static/tailwind.js"></script>
+</head>
+<body>
+    <div class="flex h-screen justify-center items-center bg-teal-400 bg-cover bg-no-repeat"
+        style="background-image: url('/static/beyond.jpg');">
+        <div class="text-center">
+            <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">The Beyond NFTs are out !</h1>
+            <p class="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-slate-200">The first users will get an exclusive NFT from our collaboration with Above</p>
+            <a href="#" class="inline-flex items-center justify-center px-5 py-3 text-base rounded-lg font-medium text-center text-white bg-purple-600">
+            Mint now
+                <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <section class="bg-white dark:bg-gray-900">
+        <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
+            <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Challenge information</h1>
+            <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-400">After many months of preparation, Beyond, the greatest art company has finally launched their NFT. People can buy them for <b>1 ETH</b> and even get a refund if they are not satisfied. For their first drop, they are collaborating with an independant artist called <b>Above</b> who launched a special collection just for the event. Only the first 5 owners of a Beyond NFT are eligible to get their hands on it.</p>
+            <br/>
+            <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-400">There is no way you can get your hands on <b>more than 5 Above NFTs</b> right ?</p>
+            <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <tbody>
+                        <tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                Your private key
+                            </th>
+                            <td class="px-6 py-4">
+                                {{ key }}
+                            </td>
+                        </tr>
+                        <tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                Your address
+                            </th>
+                            <td class="px-6 py-4">
+                                {{ address }}
+                            </td>
+                        </tr>
+                        <tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                Challenge contract
+                            </th>
+                            <td class="px-6 py-4">
+                                {{ challenge }}
+                            </td>
+                        </tr>
+                        <tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                RPC URL
+                            </th>
+                            <td id="rpc" class="px-6 py-4">
+                                loading...
+                            </td>
+                        </tr>
+                        <tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                            <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap dark:text-white">
+                                Flag
+                            </th>
+                            <td id="flag" class="px-6 py-4">
+                                GCC{}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <button onclick="flag()" type="button" class="my-4 focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Get flag</button>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById("rpc").innerText = window.location.href.replace('#','') + 'rpc';
+        function flag() {
+            fetch('/flag')
+            .then(response => response.text())
+            .then(response => {
+                document.getElementById("flag").innerText = response;
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light" >
+   <head>
+      <meta charset="utf-8">
+      <title>BockLit - Register</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content>
+      <meta name="author" content>
+      <link href="/app/assets/css/vendor.min.css" rel="stylesheet">
+      <link href="/app/assets/css/app.min.css" rel="stylesheet">
+   </head>
+   <body class="pace-top">
+      <div id="app" class="app app-full-height app-without-header">
+         <div class="register">
+            <div class="register-content">
+               <form action="/register" method="POST" name="register_form">
+                    {% include "./partials/flash.html" %}
+                    <h1 class="text-center">Sign Up</h1>
+                    <div class="mb-3">
+                        <label class="form-label">Name <span class="text-danger">*</span></label>
+                        <input type="text" name="username" class="form-control form-control-lg bg-inverse bg-opacity-5" value>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password <span class="text-danger">*</span></label>
+                        <input type="password" name="password" class="form-control form-control-lg bg-inverse bg-opacity-5" value>
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-outline-theme btn-lg d-block w-100">Sign Up</button>
+                    </div>
+                    <div class="text-inverse text-opacity-50 text-center">
+                        Already have an account? <a href="/login">Sign In</a>
+                    </div>
+               </form>
+            </div>
+         </div>
+         <a href="#" data-toggle="scroll-to-top" class="btn-scroll-top fade"><i class="fa fa-arrow-up"></i></a>
+      </div>
+      <script src="/app/assets/js/vendor.min.js" type="6c2b43899c5ab9054fe22348-text/javascript"></script>
+      <script src="/app/assets/js/app.min.js" type="6c2b43899c5ab9054fe22348-text/javascript"></script>
+   </body>
+</html>

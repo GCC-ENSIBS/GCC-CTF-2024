@@ -1,0 +1,1 @@
+cmd_util-linux/lib.a := rm -f util-linux/lib.a; ar  rcs util-linux/lib.a util-linux/dmesg.o util-linux/hexdump.o util-linux/hexdump_xxd.o util-linux/script.o util-linux/setarch.o util-linux/setpriv.o util-linux/setsid.o util-linux/switch_root.o

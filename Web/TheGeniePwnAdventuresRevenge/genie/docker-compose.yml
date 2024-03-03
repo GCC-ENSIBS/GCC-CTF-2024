@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+
+  genie:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - FLAG=GCC{BockLitSuccessfullyPonced?_SynacktivRecrute_}

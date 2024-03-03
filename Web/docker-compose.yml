@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  # challenge is dynamic now!
+  # freecider:
+  #   build: free_cider/infra
+  #   ports:
+  #     - "4005:8080"
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         cpus: "1"
+  #         memory: 500M
+  #   restart: always

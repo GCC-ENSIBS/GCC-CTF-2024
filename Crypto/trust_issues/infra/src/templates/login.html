@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% include "head.html" %}
+<body>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        form * {
+            margin: 10px 0;
+        }
+        form div {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        form div input {
+            margin: 0 10px;
+        }
+    </style>
+    <script>
+        function login(username, password) {
+            console.log(JSON.stringify({
+                    username: username,
+                    password: password
+                }))
+            fetch('/connect', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },                    
+                body: JSON.stringify({
+                    username: username,
+                    password: password
+                })
+            }).then(response => {
+                if (response.status === 200) {
+                    response.json().then(data => {
+                        localStorage.setItem('token', data.token)
+                        localStorage.setItem('user', username)
+                        window.location.href = '/'
+                    });
+                } else {
+                    alert('Wrong username or password')
+                }
+            });
+        }
+    </script>
+    {% include "header.html" %}
+<form action="javascript:login(document.getElementById('username').value, document.getElementById('password').value)">
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username"/>
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password"/>
+    <div>
+        <input type="submit" value="login">
+        <input type="submit" value="login as anonymous" formaction="javascript:login('anonymous', 'anonymous')">
+    </div>
+</form>
+{% include "footer.html" %}
+</body>
+</html>

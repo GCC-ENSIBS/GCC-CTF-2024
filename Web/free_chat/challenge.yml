@@ -1,0 +1,33 @@
+name: Free Chat
+author: Mika
+# Crypto ; Web3 ; Web ; Reverse ; Forensic ; Misc ; OSINT ; Pwn
+category: Web
+description: |-
+  A group of people has set up a new simple chat service... Show them that it's not that easy to maintain a proper app!
+  Note: The system runs on Debian 12.
+
+  Author: [Mika](https://twitter.com/bWlrYQ)
+
+# Do not touch that, dynamic scoring is used.
+value: 500
+type: dynamic
+extra:
+  initial: 500
+  decay: 55
+  minimum: 100
+
+flags:
+- GCC{L0c4t3_tr1ck+SsRf_1s_FuN}
+
+# Tags are : 1. Difficulty (Intro, Easy, Medium, Hard, Insane) ; 2. General theme (no spoil) ; 3. Author
+tags:
+- Medium
+- Web
+- Mika
+
+connection_info: https://deploy.gcc-ctf.com/
+
+# More info : https://github.com/CTFd/ctfcli/blob/master/ctfcli/spec/challenge-example.yml
+
+# Do not touch, ctf-cli related
+version: '0.1'

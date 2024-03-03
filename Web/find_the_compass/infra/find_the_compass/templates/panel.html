@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" class="uk-background-custom">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/uikit.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+    <script src="{{ url_for('static', filename='js/uikit.min.js') }}" nonce="{{nonce}}"></script>
+    <script src="{{ url_for('static', filename='js/uikit-icons.min.js') }}" nonce="{{nonce}}"></script>
+    <title>Compass - Panel</title>
+</head>
+
+<body>
+    <div class="uk-height-auto uk-position-center uk-background-muted">
+        <div class="uk-margin-auto uk-card uk-card-default uk-card-body form-container uk-animation-fade uk-width-large">
+            <div class="uk-card-header uk-margin-bottom">
+                <h1 class="uk-text-center">🧭</h1>
+                {% if session['status'] == 'guest' %}
+                <div class="uk-alert-danger" uk-alert>
+                    <a class="uk-alert-close"></a>
+                    <p>Only administrators can view this panel for now.</p>
+                </div>
+                {% elif session['status'] == 'admin' %}
+                <div class="uk-alert-success" uk-alert>
+                    <a class="uk-alert-close" uk-close></a>
+                    <p>Welcome to the panel, {{session['username']}}.</p>
+                </div>
+                {% else %}
+                <div class="uk-alert-danger" uk-alert>
+                    <a class="uk-alert-close"></a>
+                    <p>Invalid user status.</p>
+                </div>
+                {% endif %}
+                <div id="responseToCall"></div>
+            </div>
+            {% if session['status'] == 'admin' %}
+            <div>
+                <h4 class="uk-text-center">Reminders</h4>
+                <div  id="reminder-list" class="uk-panel-scrollable" style="resize: none; height:25rem;">
+                    {% if reminders|length > 0 %}
+                        {% for reminder in reminders %}
+                        <div class="uk-text-center">
+                            {{reminder[1]|safe}}
+                            <a href="/reminder?delete={{reminder[0]}}"><button class="uk-button uk-button-danger">delete</button></a>
+                        </div>
+                                <hr>
+                        {% endfor %}
+                    {% else %}
+                        <div class="uk-text-center">
+                            <p>No reminders yet.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div> 
+            <script src="{{ url_for('static', filename='js/getReminder.js')}}" nonce="{{nonce}}"></script>
+            <hr>
+            <div id="reminder-form">
+                <form action="{{url_for('reminder')}}", method="POST">
+                    <div class="uk-margin">
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="reminder_content" name="reminder" type="text" placeholder="Reminder">
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <button class="uk-button uk-width-1-1" type="submit">add reminder</button>
+                    </div>
+                </form>
+            </div>
+            {% endif %}
+            <hr>
+            <div class="uk-text-center">
+                <a href="{{url_for('logout')}}" class="uk-link-muted">logout</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/addReminder.js') }}" nonce="{{nonce}}"></script>
+</body>
+</html>

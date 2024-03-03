@@ -1,0 +1,43 @@
+name: Warp_jump
+author: NineLine
+# Crypto ; Web3 ; Web ; Reverse ; Forensic ; Misc ; OSINT ; Pwn
+category: Reverse
+description: |-
+  A friend of yours simulated a Warp drive allowing faster-than-light travel, but the process if difficult and unpredictable.
+
+  To navigate you will have to overcome the limitation of warp travel and make best use of calculated jumps.
+
+  Do you have what it takes to navigate this treacherous path ?"
+
+  Author: NineLine
+
+# Do not touch that, dynamic scoring is used.
+value: 500
+type: dynamic
+extra:
+  initial: 500
+  decay: 55
+  minimum: 100
+
+flags:
+- GCC{ae4460ba}
+- GCC{5a0817ea}
+- GCC{c740961b}
+- GCC{14ae0f9b}
+- GCC{53a7a156}
+- GCC{968b3421}
+
+# Tags are : 1. Difficulty (Intro, Easy, Medium, Hard, Insane) ; 2. General theme (no spoil) ; 3. Author
+tags:
+- Medium
+- ELF
+- NineLine
+
+# Can and should be remove if not used
+files:
+- dist/warp_jump
+
+# More info : https://github.com/CTFd/ctfcli/blob/master/ctfcli/spec/challenge-example.yml
+
+# Do not touch, ctf-cli related
+version: '0.1'
